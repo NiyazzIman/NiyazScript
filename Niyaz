@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function YBTJ_fake_script() -- ScriptUi.CloseAndHide 
+local function AZOGODO_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function YBTJ_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(YBTJ_fake_script)()
-local function KAWF_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(AZOGODO_fake_script)()
+local function AOOUR_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function KAWF_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(KAWF_fake_script)()
-local function YWKJ_fake_script() -- gui2lua10.WalkSpeed 
+coroutine.wrap(AOOUR_fake_script)()
+local function DZMIV_fake_script() -- gui2lua10.WalkSpeed 
 	local script = Instance.new('LocalScript', gui2lua10)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function YWKJ_fake_script() -- gui2lua10.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(YWKJ_fake_script)()
-local function AECO_fake_script() -- NoClip.NoClip 
+coroutine.wrap(DZMIV_fake_script)()
+local function SUNC_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function AECO_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(AECO_fake_script)()
-local function WVSN_fake_script() -- Fly.LocalScript 
+coroutine.wrap(SUNC_fake_script)()
+local function SNYQWH_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function WVSN_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(WVSN_fake_script)()
-local function DCXTFZ_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(SNYQWH_fake_script)()
+local function NNAGIX_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function DCXTFZ_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(DCXTFZ_fake_script)()
-local function GWENJ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(NNAGIX_fake_script)()
+local function WBRWKE_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,8 +725,8 @@ local function GWENJ_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(GWENJ_fake_script)()
-local function QQIF_fake_script() -- ESPButton_2.ESP 
+coroutine.wrap(WBRWKE_fake_script)()
+local function PSZE_fake_script() -- ESPButton_2.ESP 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
 	local Players = game:GetService("Players")
@@ -734,22 +734,16 @@ local function QQIF_fake_script() -- ESPButton_2.ESP
 	local localPlayer = Players.LocalPlayer
 	local espButton = script.Parent
 	local espEnabled = false
-	local playerEspObjects = {}
+	local espObjects = {}
 	
 	local function removeESP(player)
-		local espObjects = playerEspObjects[player]
-		if not espObjects then
-			return
-		end
+		local objects = espObjects[player]
 	
-		if espObjects.highlight then
-			espObjects.highlight:Destroy()
+		if objects then
+			objects.highlight:Destroy()
+			objects.nameTag:Destroy()
+			espObjects[player] = nil
 		end
-		if espObjects.nameTag then
-			espObjects.nameTag:Destroy()
-		end
-	
-		playerEspObjects[player] = nil
 	end
 	
 	local function addESP(player)
@@ -770,13 +764,12 @@ local function QQIF_fake_script() -- ESPButton_2.ESP
 		highlight.FillColor = Color3.fromRGB(255, 70, 70)
 		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 		highlight.FillTransparency = 0.65
-		highlight.OutlineTransparency = 0
 		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 		highlight.Parent = character
 	
 		local nameTag = Instance.new("BillboardGui")
 		nameTag.Name = "PlayerESPNameTag"
-		nameTag.Adornee = character:FindFirstChild("Head") or character:FindFirstChildWhichIsA("BasePart")
+		nameTag.Adornee = character:FindFirstChild("Head")
 		nameTag.AlwaysOnTop = true
 		nameTag.Size = UDim2.fromOffset(220, 32)
 		nameTag.StudsOffset = Vector3.new(0, 3, 0)
@@ -789,13 +782,12 @@ local function QQIF_fake_script() -- ESPButton_2.ESP
 		nameLabel.Text = player.DisplayName .. " (" .. player.Name .. ")"
 		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		nameLabel.TextSize = 14
-		nameLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 		nameLabel.TextStrokeTransparency = 0
 		nameLabel.Parent = nameTag
 	
-		playerEspObjects[player] = {
+		espObjects[player] = {
 			highlight = highlight,
-			nameTag = nameTag,
+			nameTag = nameTag
 		}
 	end
 	
@@ -809,21 +801,23 @@ local function QQIF_fake_script() -- ESPButton_2.ESP
 		end
 	end
 	
-	local function setESP(enabled)
-		espEnabled = enabled
+	local function toggleESP()
+		espEnabled = not espEnabled
 	
 		if espEnabled then
 			for _, player in Players:GetPlayers() do
 				addESP(player)
 			end
 		else
-			for player in pairs(playerEspObjects) do
+			for player in pairs(espObjects) do
 				removeESP(player)
 			end
 		end
 	
 		updateButton()
 	end
+	
+	espButton.Activated:Connect(toggleESP)
 	
 	local function watchPlayer(player)
 		if player == localPlayer then
@@ -835,10 +829,6 @@ local function QQIF_fake_script() -- ESPButton_2.ESP
 		end)
 	end
 	
-	espButton.Activated:Connect(function()
-		setESP(not espEnabled)
-	end)
-	
 	Players.PlayerAdded:Connect(watchPlayer)
 	Players.PlayerRemoving:Connect(removeESP)
 	
@@ -847,6 +837,5 @@ local function QQIF_fake_script() -- ESPButton_2.ESP
 	end
 	
 	updateButton()
-	
 end
-coroutine.wrap(QQIF_fake_script)()
+coroutine.wrap(PSZE_fake_script)()
