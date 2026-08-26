@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function SSBWIU_fake_script() -- ScriptUi.CloseAndHide 
+local function WWEGNHD_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function SSBWIU_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(SSBWIU_fake_script)()
-local function ZDDJWV_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(WWEGNHD_fake_script)()
+local function CAQAVR_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function ZDDJWV_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(ZDDJWV_fake_script)()
-local function NSLIWML_fake_script() -- WalkSpeed.WalkSpeed 
+coroutine.wrap(CAQAVR_fake_script)()
+local function OCRB_fake_script() -- WalkSpeed.WalkSpeed 
 	local script = Instance.new('LocalScript', WalkSpeed)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function NSLIWML_fake_script() -- WalkSpeed.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(NSLIWML_fake_script)()
-local function JNTNNY_fake_script() -- NoClip.NoClip 
+coroutine.wrap(OCRB_fake_script)()
+local function SDKKJK_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function JNTNNY_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(JNTNNY_fake_script)()
-local function TXROXY_fake_script() -- Fly.LocalScript 
+coroutine.wrap(SDKKJK_fake_script)()
+local function ECJSGFZ_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function TXROXY_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(TXROXY_fake_script)()
-local function HRWY_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(ECJSGFZ_fake_script)()
+local function JALYUW_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function HRWY_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(HRWY_fake_script)()
-local function MXBU_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(JALYUW_fake_script)()
+local function NZWG_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,11 +725,12 @@ local function MXBU_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(MXBU_fake_script)()
-local function BRYITNA_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(NZWG_fake_script)()
+local function HXTXKI_fake_script() -- ESPButton_2.LocalScript 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
 	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
 	
 	local localPlayer = Players.LocalPlayer
 	local playerGui = localPlayer:WaitForChild("PlayerGui")
@@ -759,9 +760,16 @@ local function BRYITNA_fake_script() -- ESPButton_2.LocalScript
 	
 	local function removeHighlight(player)
 		local playerEsp = highlights[player]
+	
 		if playerEsp then
-			playerEsp.highlight:Destroy()
-			playerEsp.nameTag:Destroy()
+			if playerEsp.highlight then
+				playerEsp.highlight:Destroy()
+			end
+	
+			if playerEsp.nameTag then
+				playerEsp.nameTag:Destroy()
+			end
+	
 			highlights[player] = nil
 		end
 	end
@@ -778,6 +786,14 @@ local function BRYITNA_fake_script() -- ESPButton_2.LocalScript
 			return
 		end
 	
+		local head = character:FindFirstChild("Head")
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+	
+		if not head or not humanoid then
+			return
+		end
+	
+		-- ESP Highlight
 		local highlight = Instance.new("Highlight")
 		highlight.Name = "PlayerHighlight"
 		highlight.Adornee = character
@@ -788,19 +804,21 @@ local function BRYITNA_fake_script() -- ESPButton_2.LocalScript
 		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 		highlight.Parent = character
 	
+		-- Name tag
 		local nameTag = Instance.new("BillboardGui")
 		nameTag.Name = "PlayerNameTag"
-		nameTag.Adornee = character:FindFirstChild("Head") or character:FindFirstChildWhichIsA("BasePart")
+		nameTag.Adornee = head
 		nameTag.AlwaysOnTop = true
-		nameTag.Size = UDim2.fromOffset(200, 32)
+		nameTag.Size = UDim2.fromOffset(250, 45)
 		nameTag.StudsOffset = Vector3.new(0, 3, 0)
 		nameTag.Parent = character
 	
 		local nameLabel = Instance.new("TextLabel")
+		nameLabel.Name = "PlayerName"
 		nameLabel.BackgroundTransparency = 1
 		nameLabel.Size = UDim2.fromScale(1, 1)
 		nameLabel.Font = Enum.Font.GothamBold
-		nameLabel.Text = player.DisplayName .. " (" .. player.Name .. ")"
+		nameLabel.Text = player.DisplayName .. " (@" .. player.Name .. ")"
 		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		nameLabel.TextSize = 14
 		nameLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -810,6 +828,7 @@ local function BRYITNA_fake_script() -- ESPButton_2.LocalScript
 		highlights[player] = {
 			highlight = highlight,
 			nameTag = nameTag,
+			nameLabel = nameLabel,
 		}
 	end
 	
@@ -849,18 +868,50 @@ local function BRYITNA_fake_script() -- ESPButton_2.LocalScript
 		end
 	
 		player.CharacterAdded:Connect(function()
-			addHighlight(player)
+			if espEnabled then
+				task.wait(0.2)
+				addHighlight(player)
+			end
 		end)
 	end
 	
 	Players.PlayerAdded:Connect(watchPlayer)
-	Players.PlayerRemoving:Connect(removeHighlight)
+	
+	Players.PlayerRemoving:Connect(function(player)
+		removeHighlight(player)
+	end)
 	
 	for _, player in Players:GetPlayers() do
 		watchPlayer(player)
 	end
 	
-	updateButton()
+	-- Update distance
+	RunService.RenderStepped:Connect(function()
+		if not espEnabled then
+			return
+		end
 	
+		local myCharacter = localPlayer.Character
+		local myRoot = myCharacter and myCharacter:FindFirstChild("HumanoidRootPart")
+	
+		if not myRoot then
+			return
+		end
+	
+		for player, data in pairs(highlights) do
+			local character = player.Character
+			local root = character and character:FindFirstChild("HumanoidRootPart")
+	
+			if root and data.nameLabel then
+				local distance = (myRoot.Position - root.Position).Magnitude
+				data.nameLabel.Text =
+					player.DisplayName ..
+					" (@" .. player.Name .. ")" ..
+					"\n[" .. math.floor(distance) .. " studs]"
+			end
+		end
+	end)
+	
+	updateButton()
 end
-coroutine.wrap(BRYITNA_fake_script)()
+coroutine.wrap(HXTXKI_fake_script)()
