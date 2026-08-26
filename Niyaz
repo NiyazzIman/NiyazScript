@@ -1,0 +1,829 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local ScriptUi = Instance.new("Frame")
+local MainTab = Instance.new("Frame")
+local WalkSpeed = Instance.new("TextButton")
+local NoClip = Instance.new("TextButton")
+local Fly = Instance.new("TextButton")
+local WalkSpeedSlider = Instance.new("Frame")
+local Track = Instance.new("Frame")
+local Knob = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local SpeedText = Instance.new("TextLabel")
+local FlySpeedSlider = Instance.new("Frame")
+local SpeedText_2 = Instance.new("TextLabel")
+local Track_2 = Instance.new("Frame")
+local Knob_2 = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local UICorner_4 = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
+local TabsButton = Instance.new("Frame")
+local MainButton = Instance.new("TextButton")
+local ESPButton = Instance.new("TextButton")
+local ESPPage = Instance.new("Frame")
+local ESPButton_2 = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ScriptUi.Name = "ScriptUi"
+ScriptUi.Parent = ScreenGui
+ScriptUi.AnchorPoint = Vector2.new(0.5, 0.5)
+ScriptUi.BackgroundColor3 = Color3.fromRGB(255, 62, 252)
+ScriptUi.BackgroundTransparency = 100.000
+ScriptUi.BorderColor3 = Color3.fromRGB(143, 47, 143)
+ScriptUi.BorderSizePixel = 5
+ScriptUi.Position = UDim2.new(0, 630, 0, 221)
+ScriptUi.Selectable = true
+ScriptUi.Size = UDim2.new(0, 735, 0, 388)
+ScriptUi.ZIndex = 0
+
+MainTab.Name = "MainTab"
+MainTab.Parent = ScriptUi
+MainTab.BackgroundColor3 = Color3.fromRGB(255, 62, 252)
+MainTab.BorderColor3 = Color3.fromRGB(255, 170, 255)
+MainTab.BorderSizePixel = 0
+MainTab.Position = UDim2.new(-0.0108843539, 0, 0.172959164, 0)
+MainTab.Size = UDim2.new(0, 735, 0, 387)
+
+WalkSpeed.Name = "WalkSpeed"
+WalkSpeed.Parent = MainTab
+WalkSpeed.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+WalkSpeed.BorderColor3 = Color3.fromRGB(0, 0, 0)
+WalkSpeed.BorderSizePixel = 0
+WalkSpeed.Position = UDim2.new(0.0708077326, 0, 0.470463544, 0)
+WalkSpeed.Size = UDim2.new(0, 200, 0, 30)
+WalkSpeed.Font = Enum.Font.SourceSansBold
+WalkSpeed.Text = "WalkSpeed"
+WalkSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
+WalkSpeed.TextSize = 14.000
+
+NoClip.Name = "NoClip"
+NoClip.Parent = MainTab
+NoClip.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+NoClip.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NoClip.BorderSizePixel = 0
+NoClip.Position = UDim2.new(0.0689101964, 0, 0.660694897, 0)
+NoClip.Size = UDim2.new(0, 200, 0, 30)
+NoClip.Font = Enum.Font.SourceSansBold
+NoClip.Text = "No Clip"
+NoClip.TextColor3 = Color3.fromRGB(255, 255, 255)
+NoClip.TextSize = 14.000
+
+Fly.Name = "Fly"
+Fly.Parent = MainTab
+Fly.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+Fly.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Fly.BorderSizePixel = 0
+Fly.Position = UDim2.new(0.0705093071, 0, 0.264937878, 0)
+Fly.Size = UDim2.new(0, 200, 0, 30)
+Fly.Font = Enum.Font.SourceSansBold
+Fly.Text = "Fly"
+Fly.TextColor3 = Color3.fromRGB(255, 255, 255)
+Fly.TextSize = 14.000
+
+WalkSpeedSlider.Name = "WalkSpeedSlider"
+WalkSpeedSlider.Parent = MainTab
+WalkSpeedSlider.AnchorPoint = Vector2.new(0.5, 0.5)
+WalkSpeedSlider.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
+WalkSpeedSlider.BackgroundTransparency = 100.000
+WalkSpeedSlider.BorderColor3 = Color3.fromRGB(255, 85, 0)
+WalkSpeedSlider.BorderSizePixel = 0
+WalkSpeedSlider.Position = UDim2.new(0.506999493, 0, 0.514339268, 0)
+WalkSpeedSlider.Size = UDim2.new(0, 251, 0, 29)
+
+Track.Name = "Track"
+Track.Parent = WalkSpeedSlider
+Track.Active = true
+Track.BackgroundColor3 = Color3.fromRGB(255, 170, 255)
+Track.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Track.BorderSizePixel = 0
+Track.Position = UDim2.new(0.212971359, 0, -0.0634576231, 0)
+Track.Size = UDim2.new(0, 228, 0, 30)
+
+Knob.Name = "Knob"
+Knob.Parent = Track
+Knob.AnchorPoint = Vector2.new(0.5, 0.5)
+Knob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Knob.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Knob.BorderSizePixel = 0
+Knob.Position = UDim2.new(0.113189965, 0, 0.516666651, 0)
+Knob.Size = UDim2.new(0, 53, 0, 30)
+Knob.Font = Enum.Font.SourceSans
+Knob.Text = ""
+Knob.TextColor3 = Color3.fromRGB(0, 0, 0)
+Knob.TextSize = 14.000
+
+UICorner.Parent = Knob
+
+UICorner_2.Parent = Track
+
+SpeedText.Name = "SpeedText"
+SpeedText.Parent = WalkSpeedSlider
+SpeedText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SpeedText.BackgroundTransparency = 100.000
+SpeedText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SpeedText.BorderSizePixel = 0
+SpeedText.Position = UDim2.new(0.214664295, 0, -0.546360433, 0)
+SpeedText.Size = UDim2.new(0, 227, 0, 14)
+SpeedText.Font = Enum.Font.SourceSans
+SpeedText.Text = "Speed: 16"
+SpeedText.TextColor3 = Color3.fromRGB(0, 0, 0)
+SpeedText.TextSize = 14.000
+
+FlySpeedSlider.Name = "FlySpeedSlider"
+FlySpeedSlider.Parent = MainTab
+FlySpeedSlider.BackgroundColor3 = Color3.fromRGB(139, 42, 139)
+FlySpeedSlider.BackgroundTransparency = 100.000
+FlySpeedSlider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FlySpeedSlider.BorderSizePixel = 0
+FlySpeedSlider.Position = UDim2.new(0.240238309, 0, 0.325463921, 0)
+FlySpeedSlider.Size = UDim2.new(0, 364, 0, 45)
+
+SpeedText_2.Name = "SpeedText"
+SpeedText_2.Parent = FlySpeedSlider
+SpeedText_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SpeedText_2.BackgroundTransparency = 100.000
+SpeedText_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SpeedText_2.BorderSizePixel = 0
+SpeedText_2.Position = UDim2.new(0.341895312, 0, -0.822222233, 0)
+SpeedText_2.Size = UDim2.new(0, 227, 0, 14)
+SpeedText_2.Font = Enum.Font.SourceSans
+SpeedText_2.Text = "Speed: 60"
+SpeedText_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+SpeedText_2.TextSize = 14.000
+
+Track_2.Name = "Track"
+Track_2.Parent = FlySpeedSlider
+Track_2.Active = true
+Track_2.BackgroundColor3 = Color3.fromRGB(255, 170, 255)
+Track_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Track_2.BorderSizePixel = 0
+Track_2.Position = UDim2.new(0.341896296, 0, -0.5, 0)
+Track_2.Size = UDim2.new(0, 228, 0, 30)
+
+Knob_2.Name = "Knob"
+Knob_2.Parent = Track_2
+Knob_2.AnchorPoint = Vector2.new(0.5, 0.5)
+Knob_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Knob_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Knob_2.BorderSizePixel = 0
+Knob_2.Position = UDim2.new(0.111861646, 0, 0.483333319, 0)
+Knob_2.Size = UDim2.new(0, 53, 0, 30)
+Knob_2.Font = Enum.Font.SourceSans
+Knob_2.Text = ""
+Knob_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+Knob_2.TextSize = 14.000
+
+UICorner_3.Parent = Knob_2
+
+UICorner_4.Parent = Track_2
+
+TextLabel.Parent = MainTab
+TextLabel.BackgroundColor3 = Color3.fromRGB(143, 47, 143)
+TextLabel.BackgroundTransparency = 0.200
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.324401855, 0, -0.00229847315, 0)
+TextLabel.Size = UDim2.new(0, 258, 0, 28)
+TextLabel.Font = Enum.Font.Michroma
+TextLabel.Text = "Universal Script Made By RealNiyaz"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 14.000
+
+TabsButton.Name = "TabsButton"
+TabsButton.Parent = ScriptUi
+TabsButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TabsButton.BackgroundTransparency = 100.000
+TabsButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TabsButton.BorderSizePixel = 0
+TabsButton.Position = UDim2.new(0, 0, 0.234536082, 0)
+TabsButton.Size = UDim2.new(0, 735, 0, 65)
+
+MainButton.Name = "MainButton"
+MainButton.Parent = TabsButton
+MainButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainButton.BorderSizePixel = 0
+MainButton.Position = UDim2.new(0.0680272132, 0, 0.338461548, 0)
+MainButton.Size = UDim2.new(0, 188, 0, 21)
+MainButton.Font = Enum.Font.SourceSans
+MainButton.Text = "Main"
+MainButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+MainButton.TextSize = 14.000
+
+ESPButton.Name = "ESPButton"
+ESPButton.Parent = TabsButton
+ESPButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ESPButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ESPButton.BorderSizePixel = 0
+ESPButton.Position = UDim2.new(0.36190477, 0, 0.338461548, 0)
+ESPButton.Size = UDim2.new(0, 188, 0, 21)
+ESPButton.Font = Enum.Font.SourceSans
+ESPButton.Text = "ESP"
+ESPButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+ESPButton.TextSize = 14.000
+
+ESPPage.Name = "ESPPage"
+ESPPage.Parent = ScriptUi
+ESPPage.BackgroundColor3 = Color3.fromRGB(255, 62, 252)
+ESPPage.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ESPPage.BorderSizePixel = 0
+ESPPage.Position = UDim2.new(-0.00952380989, 0, 0.170666561, 0)
+ESPPage.Size = UDim2.new(0, 734, 0, 387)
+
+ESPButton_2.Name = "ESPButton"
+ESPButton_2.Parent = ESPPage
+ESPButton_2.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+ESPButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ESPButton_2.BorderSizePixel = 0
+ESPButton_2.Position = UDim2.new(0.0688781738, 0, 0.267063379, 0)
+ESPButton_2.Size = UDim2.new(0, 200, 0, 30)
+ESPButton_2.Font = Enum.Font.SourceSansBold
+ESPButton_2.Text = "Player ESP"
+ESPButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+ESPButton_2.TextSize = 14.000
+
+-- Scripts:
+
+local function OGUL_fake_script() -- ScriptUi.CloseAndHide 
+	local script = Instance.new('LocalScript', ScriptUi)
+
+	local UserInputService = game:GetService("UserInputService")
+	local ui = script.Parent
+	
+	local dragging = false
+	local dragStart
+	local startPosition
+	
+	ui.Active = true
+	
+	ui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			dragging = true
+			dragStart = input.Position
+			startPosition = ui.Position
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+			local difference = input.Position - dragStart
+	
+			ui.Position = UDim2.new(
+				startPosition.X.Scale,
+				startPosition.X.Offset + difference.X,
+				startPosition.Y.Scale,
+				startPosition.Y.Offset + difference.Y
+			)
+		end
+	end)
+	
+	UserInputService.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			dragging = false
+		end
+	end)
+	
+	local UserInputService = game:GetService("UserInputService")
+	
+	local ui = script.Parent
+	
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then
+			return
+		end
+	
+		if input.KeyCode == Enum.KeyCode.RightControl then
+			ui.Visible = not ui.Visible
+		end
+	end)
+	
+end
+coroutine.wrap(OGUL_fake_script)()
+local function BMGGG_fake_script() -- ScriptUi.Tabs 
+	local script = Instance.new('LocalScript', ScriptUi)
+
+	local frame = script.Parent
+	local tabBar = frame:WaitForChild("TabsButton")
+	
+	local mainTab = tabBar:WaitForChild("MainButton")
+	local secondTab = tabBar:WaitForChild("ESPButton")
+	local mainPage = frame:WaitForChild("MainTab")
+	local secondPage = frame:WaitForChild("ESPPage")
+	
+	mainPage.ZIndex = 1
+	secondPage.ZIndex = 1
+	tabBar.ZIndex = 10
+	mainTab.ZIndex = 11
+	secondTab.ZIndex = 11
+	
+	local activeColor = Color3.fromRGB(30, 180, 80)
+	local inactiveColor = Color3.fromRGB(165, 50, 165)
+	
+	local function showPage(page, selectedTab)
+		mainPage.Visible = page == mainPage
+		secondPage.Visible = page == secondPage
+	
+		mainTab.BackgroundColor3 = selectedTab == mainTab and activeColor or inactiveColor
+		secondTab.BackgroundColor3 = selectedTab == secondTab and activeColor or inactiveColor
+	end
+	
+	mainTab.Activated:Connect(function()
+		showPage(mainPage, mainTab)
+	end)
+	
+	secondTab.Activated:Connect(function()
+		showPage(secondPage, secondTab)
+	end)
+	
+	showPage(mainPage, mainTab)
+	
+end
+coroutine.wrap(BMGGG_fake_script)()
+local function GQSNVQ_fake_script() -- WalkSpeed.WalkSpeed 
+	local script = Instance.new('LocalScript', WalkSpeed)
+
+	local Players = game:GetService("Players")
+	
+	local player = Players.LocalPlayer
+	local walkSpeedButton = script.Parent
+	local frame = walkSpeedButton.Parent
+	
+	local normalWalkSpeed = 16
+	local fastWalkSpeed = frame:GetAttribute("WalkSpeedValue") or 50
+	local fastWalkSpeedEnabled = false
+	
+	local function updateWalkSpeed()
+		local character = player.Character or player.CharacterAdded:Wait()
+		local humanoid = character:WaitForChild("Humanoid")
+		fastWalkSpeed = frame:GetAttribute("WalkSpeedValue") or fastWalkSpeed
+	
+		if fastWalkSpeedEnabled then
+			humanoid.WalkSpeed = fastWalkSpeed
+			walkSpeedButton.Text = "WalkSpeed: ON"
+			walkSpeedButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
+		else
+			humanoid.WalkSpeed = normalWalkSpeed
+			walkSpeedButton.Text = "WalkSpeed"
+			walkSpeedButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+		end
+	end
+	
+	frame:GetAttributeChangedSignal("WalkSpeedValue"):Connect(function()
+		if fastWalkSpeedEnabled then
+			updateWalkSpeed()
+		end
+	end)
+	
+	walkSpeedButton.Active = true
+	walkSpeedButton.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			fastWalkSpeedEnabled = not fastWalkSpeedEnabled
+			updateWalkSpeed()
+		end
+	end)
+	
+	player.CharacterAdded:Connect(function()
+		updateWalkSpeed()
+	end)
+	
+	updateWalkSpeed()
+end
+coroutine.wrap(GQSNVQ_fake_script)()
+local function FXFA_fake_script() -- NoClip.NoClip 
+	local script = Instance.new('LocalScript', NoClip)
+
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	
+	local player = Players.LocalPlayer
+	local noClipButton = script.Parent
+	local noClipEnabled = false
+	local noClipConnection
+	
+	local function setNoClip(enabled)
+		noClipEnabled = enabled
+	
+		if noClipConnection then
+			noClipConnection:Disconnect()
+			noClipConnection = nil
+		end
+	
+		local character = player.Character
+		if character then
+			for _, object in character:GetDescendants() do
+				if object:IsA("BasePart") then
+					object.CanCollide = not enabled
+				end
+			end
+		end
+	
+		if enabled then
+			noClipButton.Text = "NoClip: ON"
+			noClipButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
+		else
+			noClipButton.Text = "NoClip"
+			noClipButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+			return
+		end
+	
+		noClipConnection = RunService.Stepped:Connect(function()
+			local currentCharacter = player.Character
+			if not currentCharacter then
+				return
+			end
+	
+			for _, object in currentCharacter:GetDescendants() do
+				if object:IsA("BasePart") then
+					object.CanCollide = false
+				end
+			end
+		end)
+	end
+	
+	noClipButton.Active = true
+	noClipButton.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			setNoClip(not noClipEnabled)
+		end
+	end)
+	
+	player.CharacterAdded:Connect(function()
+		noClipEnabled = false
+		setNoClip(false)
+	end)
+	
+	setNoClip(false)
+	
+end
+coroutine.wrap(FXFA_fake_script)()
+local function JKJYEBA_fake_script() -- Fly.LocalScript 
+	local script = Instance.new('LocalScript', Fly)
+
+	local UserInputService = game:GetService("UserInputService")
+	local RunService = game:GetService("RunService")
+	local Players = game:GetService("Players")
+	
+	local player = Players.LocalPlayer
+	local flyButton = script.Parent
+	local frame = flyButton.Parent
+	
+	local flying = false
+	local flySpeed = frame:GetAttribute("FlySpeedValue") or 60
+	local flightConnection
+	local flightVelocity
+	local flightAttachment
+	
+	local function updateButtonVisual()
+		if flying then
+			flyButton.Text = "Fly: ON"
+			flyButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
+		else
+			flyButton.Text = "Fly"
+			flyButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+		end
+	end
+	
+	local function setFlying(enabled)
+		flying = enabled
+	
+		local character = player.Character
+		local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+		local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+	
+		if not humanoid or not rootPart then
+			flying = false
+			updateButtonVisual()
+			return
+		end
+	
+		humanoid.AutoRotate = not flying
+		humanoid.PlatformStand = flying
+	
+		if flightConnection then
+			flightConnection:Disconnect()
+			flightConnection = nil
+		end
+		if flightVelocity then
+			flightVelocity:Destroy()
+			flightVelocity = nil
+		end
+		if flightAttachment then
+			flightAttachment:Destroy()
+			flightAttachment = nil
+		end
+	
+		if flying then
+			flightAttachment = Instance.new("Attachment")
+			flightAttachment.Name = "FlightAttachment"
+			flightAttachment.Parent = rootPart
+	
+			flightVelocity = Instance.new("LinearVelocity")
+			flightVelocity.Name = "FlightVelocity"
+			flightVelocity.Attachment0 = flightAttachment
+			flightVelocity.MaxForce = math.huge
+			flightVelocity.RelativeTo = Enum.ActuatorRelativeTo.World
+			flightVelocity.VectorVelocity = Vector3.zero
+			flightVelocity.Parent = rootPart
+	
+			flightConnection = RunService.Heartbeat:Connect(function()
+				local camera = workspace.CurrentCamera
+				if not camera or not rootPart.Parent then
+					return
+				end
+	
+				flySpeed = frame:GetAttribute("FlySpeedValue") or flySpeed
+	
+				local lookDirection = camera.CFrame.LookVector
+				rootPart.CFrame = CFrame.lookAt(rootPart.Position, rootPart.Position + lookDirection)
+				rootPart.AssemblyAngularVelocity = Vector3.zero
+	
+				local direction = Vector3.zero
+	
+				if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+					direction = direction + camera.CFrame.LookVector
+				end
+				if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+					direction = direction - camera.CFrame.LookVector
+				end
+				if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+					direction = direction + camera.CFrame.RightVector
+				end
+				if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+					direction = direction - camera.CFrame.RightVector
+				end
+				if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
+					direction = direction + Vector3.yAxis
+				end
+				if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+					direction = direction - Vector3.yAxis
+				end
+	
+				flightVelocity.VectorVelocity = direction.Magnitude > 0
+					and direction.Unit * flySpeed
+					or Vector3.zero
+			end)
+		else
+			rootPart.AssemblyLinearVelocity = Vector3.zero
+		end
+	
+		updateButtonVisual()
+	end
+	
+	flyButton.Active = true
+	flyButton.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			setFlying(not flying)
+		end
+	end)
+	
+	-- Reset flying state when the character respawns
+	player.CharacterAdded:Connect(function(character)
+		if flying then
+			flying = false
+			if flightConnection then
+				flightConnection:Disconnect()
+				flightConnection = nil
+			end
+			updateButtonVisual()
+		end
+	end)
+	
+end
+coroutine.wrap(JKJYEBA_fake_script)()
+local function RIMFO_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+	local script = Instance.new('LocalScript', WalkSpeedSlider)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local speedSlider = script.Parent
+	local frame = speedSlider.Parent
+	local speedTrack = speedSlider:WaitForChild("Track")
+	local speedKnob = speedTrack:WaitForChild("Knob")
+	local speedText = speedSlider:WaitForChild("SpeedText")
+	
+	local minWalkSpeed = 16
+	local maxWalkSpeed = 100
+	local walkSpeed = minWalkSpeed
+	local sliderDragging = false
+	
+	local function updateWalkSpeed(inputX)
+		local percent = math.clamp(
+			(inputX - speedTrack.AbsolutePosition.X) / speedTrack.AbsoluteSize.X,
+			0,
+			1
+		)
+	
+		walkSpeed = math.round(minWalkSpeed + (maxWalkSpeed - minWalkSpeed) * percent)
+		speedKnob.Position = UDim2.new(percent, 0, 0.5, 0)
+		speedText.Text = "WalkSpeed: " .. walkSpeed
+		frame:SetAttribute("WalkSpeedValue", walkSpeed)
+	end
+	
+	speedTrack.Active = true
+	speedTrack.ClipsDescendants = true
+	speedKnob.Active = true
+	
+	local function beginSliderDrag(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			sliderDragging = true
+			updateWalkSpeed(input.Position.X)
+		end
+	end
+	
+	speedTrack.InputBegan:Connect(beginSliderDrag)
+	speedKnob.InputBegan:Connect(beginSliderDrag)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if sliderDragging and (
+			input.UserInputType == Enum.UserInputType.MouseMovement
+				or input.UserInputType == Enum.UserInputType.Touch
+			) then
+			updateWalkSpeed(input.Position.X)
+		end
+	end)
+	
+	UserInputService.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			sliderDragging = false
+		end
+	end)
+	
+	updateWalkSpeed(speedTrack.AbsolutePosition.X)
+	
+end
+coroutine.wrap(RIMFO_fake_script)()
+local function LTQZZ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+	local script = Instance.new('LocalScript', FlySpeedSlider)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local speedSlider = script.Parent
+	local frame = speedSlider.Parent
+	local speedTrack = speedSlider:WaitForChild("Track")
+	local speedKnob = speedTrack:WaitForChild("Knob")
+	local speedText = speedSlider:WaitForChild("SpeedText")
+	
+	local minFlySpeed = 20
+	local maxFlySpeed = 150
+	local flySpeed = minFlySpeed
+	local sliderDragging = false
+	
+	local function updateFlySpeed(inputX)
+		local percent = math.clamp(
+			(inputX - speedTrack.AbsolutePosition.X) / speedTrack.AbsoluteSize.X,
+			0,
+			1
+		)
+	
+		flySpeed = math.round(minFlySpeed + (maxFlySpeed - minFlySpeed) * percent)
+		speedKnob.Position = UDim2.new(percent, 0, 0.5, 0)
+		speedText.Text = "FlySpeed: " .. flySpeed
+		frame:SetAttribute("FlySpeedValue", flySpeed)
+	end
+	
+	speedTrack.Active = true
+	speedTrack.ClipsDescendants = true
+	speedKnob.Active = true
+	
+	local function beginSliderDrag(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			sliderDragging = true
+			updateFlySpeed(input.Position.X)
+		end
+	end
+	
+	speedTrack.InputBegan:Connect(beginSliderDrag)
+	speedKnob.InputBegan:Connect(beginSliderDrag)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if sliderDragging and (
+			input.UserInputType == Enum.UserInputType.MouseMovement
+				or input.UserInputType == Enum.UserInputType.Touch
+			) then
+			updateFlySpeed(input.Position.X)
+		end
+	end)
+	
+	UserInputService.InputEnded:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			sliderDragging = false
+		end
+	end)
+	
+	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
+	
+end
+coroutine.wrap(LTQZZ_fake_script)()
+local function XJGT_fake_script() -- ESPButton_2.LocalScript 
+	local script = Instance.new('LocalScript', ESPButton_2)
+
+	local Players = game:GetService("Players")
+	
+	local localPlayer = Players.LocalPlayer
+	local espButton = script.Parent
+	local espEnabled = false
+	local highlights = {}
+	
+	local function removeHighlight(player)
+		local highlight = highlights[player]
+		if highlight then
+			highlight:Destroy()
+			highlights[player] = nil
+		end
+	end
+	
+	local function addHighlight(player)
+		if player == localPlayer or not espEnabled then
+			return
+		end
+	
+		removeHighlight(player)
+	
+		local character = player.Character
+		if not character then
+			return
+		end
+	
+		local highlight = Instance.new("Highlight")
+		highlight.Name = "PlayerHighlight"
+		highlight.Adornee = character
+		highlight.FillColor = Color3.fromRGB(255, 70, 70)
+		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+		highlight.FillTransparency = 0.65
+		highlight.OutlineTransparency = 0
+		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+		highlight.Parent = character
+		highlights[player] = highlight
+	end
+	
+	local function updateButton()
+		if espEnabled then
+			espButton.Text = "Player ESP: ON"
+			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
+		else
+			espButton.Text = "Player ESP"
+			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+		end
+	end
+	
+	local function setESP(enabled)
+		espEnabled = enabled
+	
+		if espEnabled then
+			for _, player in Players:GetPlayers() do
+				addHighlight(player)
+			end
+		else
+			for player in pairs(highlights) do
+				removeHighlight(player)
+			end
+		end
+	
+		updateButton()
+	end
+	
+	espButton.Active = true
+	espButton.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch then
+			setESP(not espEnabled)
+		end
+	end)
+	
+	local function watchPlayer(player)
+		if player == localPlayer then
+			return
+		end
+	
+		player.CharacterAdded:Connect(function()
+			addHighlight(player)
+		end)
+	end
+	
+	Players.PlayerAdded:Connect(watchPlayer)
+	Players.PlayerRemoving:Connect(removeHighlight)
+	
+	for _, player in Players:GetPlayers() do
+		watchPlayer(player)
+	end
+	
+	updateButton()
+	
+end
+coroutine.wrap(XJGT_fake_script)()
