@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function AZOGODO_fake_script() -- ScriptUi.CloseAndHide 
+local function TUMYXC_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function AZOGODO_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(AZOGODO_fake_script)()
-local function AOOUR_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(TUMYXC_fake_script)()
+local function HCGKDPX_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function AOOUR_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(AOOUR_fake_script)()
-local function DZMIV_fake_script() -- gui2lua10.WalkSpeed 
+coroutine.wrap(HCGKDPX_fake_script)()
+local function WOWIKK_fake_script() -- gui2lua10.WalkSpeed 
 	local script = Instance.new('LocalScript', gui2lua10)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function DZMIV_fake_script() -- gui2lua10.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(DZMIV_fake_script)()
-local function SUNC_fake_script() -- NoClip.NoClip 
+coroutine.wrap(WOWIKK_fake_script)()
+local function QANZQG_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function SUNC_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(SUNC_fake_script)()
-local function SNYQWH_fake_script() -- Fly.LocalScript 
+coroutine.wrap(QANZQG_fake_script)()
+local function BBVPZN_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function SNYQWH_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(SNYQWH_fake_script)()
-local function NNAGIX_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(BBVPZN_fake_script)()
+local function GKBS_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function NNAGIX_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(NNAGIX_fake_script)()
-local function WBRWKE_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(GKBS_fake_script)()
+local function NWYWDF_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,8 +725,8 @@ local function WBRWKE_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(WBRWKE_fake_script)()
-local function PSZE_fake_script() -- ESPButton_2.ESP 
+coroutine.wrap(NWYWDF_fake_script)()
+local function OULJJ_fake_script() -- ESPButton_2.ESP 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
 	local Players = game:GetService("Players")
@@ -734,16 +734,19 @@ local function PSZE_fake_script() -- ESPButton_2.ESP
 	local localPlayer = Players.LocalPlayer
 	local espButton = script.Parent
 	local espEnabled = false
-	local espObjects = {}
+	local playerEspObjects = {}
 	
 	local function removeESP(player)
-		local objects = espObjects[player]
-	
-		if objects then
-			objects.highlight:Destroy()
-			objects.nameTag:Destroy()
-			espObjects[player] = nil
+		local espObjects = playerEspObjects[player]
+		if not espObjects then
+			return
 		end
+	
+		if espObjects.highlight then
+			espObjects.highlight:Destroy()
+		end
+	
+		playerEspObjects[player] = nil
 	end
 	
 	local function addESP(player)
@@ -764,30 +767,13 @@ local function PSZE_fake_script() -- ESPButton_2.ESP
 		highlight.FillColor = Color3.fromRGB(255, 70, 70)
 		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
 		highlight.FillTransparency = 0.65
+		highlight.OutlineTransparency = 0
 		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 		highlight.Parent = character
 	
-		local nameTag = Instance.new("BillboardGui")
-		nameTag.Name = "PlayerESPNameTag"
-		nameTag.Adornee = character:FindFirstChild("Head")
-		nameTag.AlwaysOnTop = true
-		nameTag.Size = UDim2.fromOffset(220, 32)
-		nameTag.StudsOffset = Vector3.new(0, 3, 0)
-		nameTag.Parent = character
 	
-		local nameLabel = Instance.new("TextLabel")
-		nameLabel.BackgroundTransparency = 1
-		nameLabel.Size = UDim2.fromScale(1, 1)
-		nameLabel.Font = Enum.Font.GothamBold
-		nameLabel.Text = player.DisplayName .. " (" .. player.Name .. ")"
-		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-		nameLabel.TextSize = 14
-		nameLabel.TextStrokeTransparency = 0
-		nameLabel.Parent = nameTag
-	
-		espObjects[player] = {
+		playerEspObjects[player] = {
 			highlight = highlight,
-			nameTag = nameTag
 		}
 	end
 	
@@ -801,23 +787,21 @@ local function PSZE_fake_script() -- ESPButton_2.ESP
 		end
 	end
 	
-	local function toggleESP()
-		espEnabled = not espEnabled
+	local function setESP(enabled)
+		espEnabled = enabled
 	
 		if espEnabled then
 			for _, player in Players:GetPlayers() do
 				addESP(player)
 			end
 		else
-			for player in pairs(espObjects) do
+			for player in pairs(playerEspObjects) do
 				removeESP(player)
 			end
 		end
 	
 		updateButton()
 	end
-	
-	espButton.Activated:Connect(toggleESP)
 	
 	local function watchPlayer(player)
 		if player == localPlayer then
@@ -829,6 +813,10 @@ local function PSZE_fake_script() -- ESPButton_2.ESP
 		end)
 	end
 	
+	espButton.Activated:Connect(function()
+		setESP(not espEnabled)
+	end)
+	
 	Players.PlayerAdded:Connect(watchPlayer)
 	Players.PlayerRemoving:Connect(removeESP)
 	
@@ -837,5 +825,6 @@ local function PSZE_fake_script() -- ESPButton_2.ESP
 	end
 	
 	updateButton()
+	
 end
-coroutine.wrap(PSZE_fake_script)()
+coroutine.wrap(OULJJ_fake_script)()
