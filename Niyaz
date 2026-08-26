@@ -1,13 +1,11 @@
 -- Gui to Lua
 -- Version: 3.2
--- To get the loadstring you must click the raw and paste to |    loadstring(game:HttpGet(""))()    |
 
 -- Instances:
 
-local ScreenGui = Instance.new("ScreenGui")
 local ScriptUi = Instance.new("Frame")
 local MainTab = Instance.new("Frame")
-local WalkSpeed = Instance.new("TextButton")
+local gui2lua10 = Instance.new("TextButton")
 local NoClip = Instance.new("TextButton")
 local Fly = Instance.new("TextButton")
 local WalkSpeedSlider = Instance.new("Frame")
@@ -31,11 +29,8 @@ local ESPButton_2 = Instance.new("TextButton")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
 ScriptUi.Name = "ScriptUi"
-ScriptUi.Parent = ScreenGui
+ScriptUi.Parent = game.StarterGui.ScreenGui
 ScriptUi.AnchorPoint = Vector2.new(0.5, 0.5)
 ScriptUi.BackgroundColor3 = Color3.fromRGB(255, 62, 252)
 ScriptUi.BackgroundTransparency = 100.000
@@ -54,17 +49,17 @@ MainTab.BorderSizePixel = 0
 MainTab.Position = UDim2.new(-0.0108843539, 0, 0.172959164, 0)
 MainTab.Size = UDim2.new(0, 735, 0, 387)
 
-WalkSpeed.Name = "WalkSpeed"
-WalkSpeed.Parent = MainTab
-WalkSpeed.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
-WalkSpeed.BorderColor3 = Color3.fromRGB(0, 0, 0)
-WalkSpeed.BorderSizePixel = 0
-WalkSpeed.Position = UDim2.new(0.0708077326, 0, 0.470463544, 0)
-WalkSpeed.Size = UDim2.new(0, 200, 0, 30)
-WalkSpeed.Font = Enum.Font.SourceSansBold
-WalkSpeed.Text = "WalkSpeed"
-WalkSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
-WalkSpeed.TextSize = 14.000
+gui2lua10.Name = "gui2lua #10"
+gui2lua10.Parent = MainTab
+gui2lua10.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+gui2lua10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+gui2lua10.BorderSizePixel = 0
+gui2lua10.Position = UDim2.new(0.0708077326, 0, 0.470463544, 0)
+gui2lua10.Size = UDim2.new(0, 200, 0, 30)
+gui2lua10.Font = Enum.Font.SourceSansBold
+gui2lua10.Text = "WalkSpeed"
+gui2lua10.TextColor3 = Color3.fromRGB(255, 255, 255)
+gui2lua10.TextSize = 14.000
 
 NoClip.Name = "NoClip"
 NoClip.Parent = MainTab
@@ -254,7 +249,47 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function OGUL_fake_script() -- ScriptUi.CloseAndHide 
+local function HBBOF_fake_script() -- ScriptUi.Tabs 
+	local script = Instance.new('LocalScript', ScriptUi)
+
+	local frame = script.Parent
+	local tabBar = frame:WaitForChild("TabsButton")
+	
+	local mainTab = tabBar:WaitForChild("MainButton")
+	local secondTab = tabBar:WaitForChild("ESPButton")
+	local mainPage = frame:WaitForChild("MainTab")
+	local secondPage = frame:WaitForChild("ESPPage")
+	
+	mainPage.ZIndex = 1
+	secondPage.ZIndex = 1
+	tabBar.ZIndex = 10
+	mainTab.ZIndex = 11
+	secondTab.ZIndex = 11
+	
+	local activeColor = Color3.fromRGB(30, 180, 80)
+	local inactiveColor = Color3.fromRGB(165, 50, 165)
+	
+	local function showPage(page, selectedTab)
+		mainPage.Visible = page == mainPage
+		secondPage.Visible = page == secondPage
+	
+		mainTab.BackgroundColor3 = selectedTab == mainTab and activeColor or inactiveColor
+		secondTab.BackgroundColor3 = selectedTab == secondTab and activeColor or inactiveColor
+	end
+	
+	mainTab.Activated:Connect(function()
+		showPage(mainPage, mainTab)
+	end)
+	
+	secondTab.Activated:Connect(function()
+		showPage(secondPage, secondTab)
+	end)
+	
+	showPage(mainPage, mainTab)
+	
+end
+coroutine.wrap(HBBOF_fake_script)()
+local function SCEC_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -308,49 +343,9 @@ local function OGUL_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(OGUL_fake_script)()
-local function BMGGG_fake_script() -- ScriptUi.Tabs 
-	local script = Instance.new('LocalScript', ScriptUi)
-
-	local frame = script.Parent
-	local tabBar = frame:WaitForChild("TabsButton")
-	
-	local mainTab = tabBar:WaitForChild("MainButton")
-	local secondTab = tabBar:WaitForChild("ESPButton")
-	local mainPage = frame:WaitForChild("MainTab")
-	local secondPage = frame:WaitForChild("ESPPage")
-	
-	mainPage.ZIndex = 1
-	secondPage.ZIndex = 1
-	tabBar.ZIndex = 10
-	mainTab.ZIndex = 11
-	secondTab.ZIndex = 11
-	
-	local activeColor = Color3.fromRGB(30, 180, 80)
-	local inactiveColor = Color3.fromRGB(165, 50, 165)
-	
-	local function showPage(page, selectedTab)
-		mainPage.Visible = page == mainPage
-		secondPage.Visible = page == secondPage
-	
-		mainTab.BackgroundColor3 = selectedTab == mainTab and activeColor or inactiveColor
-		secondTab.BackgroundColor3 = selectedTab == secondTab and activeColor or inactiveColor
-	end
-	
-	mainTab.Activated:Connect(function()
-		showPage(mainPage, mainTab)
-	end)
-	
-	secondTab.Activated:Connect(function()
-		showPage(secondPage, secondTab)
-	end)
-	
-	showPage(mainPage, mainTab)
-	
-end
-coroutine.wrap(BMGGG_fake_script)()
-local function GQSNVQ_fake_script() -- WalkSpeed.WalkSpeed 
-	local script = Instance.new('LocalScript', WalkSpeed)
+coroutine.wrap(SCEC_fake_script)()
+local function HNDQ_fake_script() -- gui2lua10.WalkSpeed 
+	local script = Instance.new('LocalScript', gui2lua10)
 
 	local Players = game:GetService("Players")
 	
@@ -399,8 +394,8 @@ local function GQSNVQ_fake_script() -- WalkSpeed.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(GQSNVQ_fake_script)()
-local function FXFA_fake_script() -- NoClip.NoClip 
+coroutine.wrap(HNDQ_fake_script)()
+local function WOCJP_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -467,8 +462,8 @@ local function FXFA_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(FXFA_fake_script)()
-local function JKJYEBA_fake_script() -- Fly.LocalScript 
+coroutine.wrap(WOCJP_fake_script)()
+local function KUWB_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -602,8 +597,8 @@ local function JKJYEBA_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(JKJYEBA_fake_script)()
-local function RIMFO_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(KUWB_fake_script)()
+local function KOUEBY_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -666,8 +661,8 @@ local function RIMFO_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(RIMFO_fake_script)()
-local function LTQZZ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(KOUEBY_fake_script)()
+local function HJUMSJ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -730,36 +725,32 @@ local function LTQZZ_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(LTQZZ_fake_script)()
-
--- ============================================================
--- MODIFIED ESP SCRIPT – shows Name, Health, and Distance (studs)
--- ============================================================
-local function XJGT_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(HJUMSJ_fake_script)()
+local function ZAPFPT_fake_script() -- ESPButton_2.ESP 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
-
+	
 	local localPlayer = Players.LocalPlayer
 	local espButton = script.Parent
 	local espEnabled = false
-
-	local espData = {} -- player -> {gui, labels, healthConnection, character, head}
+	
+	local espData = {} -- player -> {gui, labels, connection, healthConnection, character}
 	local updateConnection = nil
-
+	
 	local function createESP(player)
 		if player == localPlayer or not espEnabled then return end
-
+	
 		local character = player.Character
 		if not character then return end
-
+	
 		local head = character:FindFirstChild("Head")
 		if not head then return end
-
+	
 		-- Remove existing ESP for this player if any
 		removeESP(player)
-
+	
 		-- Create BillboardGui
 		local billboard = Instance.new("BillboardGui")
 		billboard.Name = "PlayerESP"
@@ -769,7 +760,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 		billboard.MaxDistance = 200
 		billboard.AlwaysOnTop = true
 		billboard.Parent = character
-
+	
 		-- Main frame
 		local frame = Instance.new("Frame")
 		frame.Size = UDim2.new(1, 0, 1, 0)
@@ -777,7 +768,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 		frame.BackgroundTransparency = 0.5
 		frame.BorderSizePixel = 0
 		frame.Parent = billboard
-
+	
 		-- Name label
 		local nameLabel = Instance.new("TextLabel")
 		nameLabel.Size = UDim2.new(1, 0, 0.3, 0)
@@ -789,7 +780,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 		nameLabel.Font = Enum.Font.SourceSansBold
 		nameLabel.TextXAlignment = Enum.TextXAlignment.Center
 		nameLabel.Parent = frame
-
+	
 		-- Health label
 		local healthLabel = Instance.new("TextLabel")
 		healthLabel.Size = UDim2.new(1, 0, 0.3, 0)
@@ -801,7 +792,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 		healthLabel.Font = Enum.Font.SourceSans
 		healthLabel.TextXAlignment = Enum.TextXAlignment.Center
 		healthLabel.Parent = frame
-
+	
 		-- Distance label
 		local distLabel = Instance.new("TextLabel")
 		distLabel.Size = UDim2.new(1, 0, 0.3, 0)
@@ -813,7 +804,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 		distLabel.Font = Enum.Font.SourceSans
 		distLabel.TextXAlignment = Enum.TextXAlignment.Center
 		distLabel.Parent = frame
-
+	
 		-- Store references
 		espData[player] = {
 			gui = billboard,
@@ -826,7 +817,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			humanoid = character:FindFirstChildOfClass("Humanoid"),
 			healthConnection = nil
 		}
-
+	
 		-- Update health on change
 		local humanoid = espData[player].humanoid
 		if humanoid then
@@ -847,7 +838,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			espData[player].healthConnection = conn
 		end
 	end
-
+	
 	local function removeESP(player)
 		local data = espData[player]
 		if data then
@@ -860,12 +851,12 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			espData[player] = nil
 		end
 	end
-
+	
 	local function updateDistances()
 		local localCharacter = localPlayer.Character
 		local localRoot = localCharacter and localCharacter:FindFirstChild("HumanoidRootPart")
 		if not localRoot then return end
-
+	
 		for player, data in pairs(espData) do
 			if data.gui and data.head then
 				local pos1 = localRoot.Position
@@ -875,7 +866,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			end
 		end
 	end
-
+	
 	local function updateButton()
 		if espEnabled then
 			espButton.Text = "Player ESP: ON"
@@ -885,10 +876,10 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
 		end
 	end
-
+	
 	local function setESP(enabled)
 		espEnabled = enabled
-
+	
 		if espEnabled then
 			-- Create ESP for all existing players
 			for _, player in Players:GetPlayers() do
@@ -908,10 +899,10 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 				updateConnection = nil
 			end
 		end
-
+	
 		updateButton()
 	end
-
+	
 	espButton.Active = true
 	espButton.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1
@@ -919,7 +910,7 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			setESP(not espEnabled)
 		end
 	end)
-
+	
 	-- Handle new players
 	local function onPlayerAdded(player)
 		if espEnabled then
@@ -936,19 +927,23 @@ local function XJGT_fake_script() -- ESPButton_2.LocalScript
 			end
 		end)
 	end
-
+	
 	Players.PlayerAdded:Connect(onPlayerAdded)
-
+	
 	-- Handle player leaving
 	Players.PlayerRemoving:Connect(function(player)
 		removeESP(player)
 	end)
-
+	
 	-- Initialize for existing players
 	for _, player in Players:GetPlayers() do
 		onPlayerAdded(player)
 	end
-
+	
+	-- Cleanup on script disable
+	script.Parent.Parent.Parent:WaitForChild("ScreenGui") -- just to keep it loaded?
+	-- Not necessary.
+	
 	updateButton()
 end
-coroutine.wrap(XJGT_fake_script)()
+coroutine.wrap(ZAPFPT_fake_script)()
