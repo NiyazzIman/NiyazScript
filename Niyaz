@@ -5,7 +5,7 @@
 
 local ScriptUi = Instance.new("Frame")
 local MainTab = Instance.new("Frame")
-local WalkSpeed = Instance.new("TextButton")
+local gui2lua10 = Instance.new("TextButton")
 local NoClip = Instance.new("TextButton")
 local Fly = Instance.new("TextButton")
 local WalkSpeedSlider = Instance.new("Frame")
@@ -49,17 +49,17 @@ MainTab.BorderSizePixel = 0
 MainTab.Position = UDim2.new(-0.0108843539, 0, 0.172959164, 0)
 MainTab.Size = UDim2.new(0, 735, 0, 387)
 
-WalkSpeed.Name = "WalkSpeed"
-WalkSpeed.Parent = MainTab
-WalkSpeed.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
-WalkSpeed.BorderColor3 = Color3.fromRGB(0, 0, 0)
-WalkSpeed.BorderSizePixel = 0
-WalkSpeed.Position = UDim2.new(0.0708077326, 0, 0.470463544, 0)
-WalkSpeed.Size = UDim2.new(0, 200, 0, 30)
-WalkSpeed.Font = Enum.Font.SourceSansBold
-WalkSpeed.Text = "WalkSpeed"
-WalkSpeed.TextColor3 = Color3.fromRGB(255, 255, 255)
-WalkSpeed.TextSize = 14.000
+gui2lua10.Name = "gui2lua #10"
+gui2lua10.Parent = MainTab
+gui2lua10.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+gui2lua10.BorderColor3 = Color3.fromRGB(0, 0, 0)
+gui2lua10.BorderSizePixel = 0
+gui2lua10.Position = UDim2.new(0.0708077326, 0, 0.470463544, 0)
+gui2lua10.Size = UDim2.new(0, 200, 0, 30)
+gui2lua10.Font = Enum.Font.SourceSansBold
+gui2lua10.Text = "WalkSpeed"
+gui2lua10.TextColor3 = Color3.fromRGB(255, 255, 255)
+gui2lua10.TextSize = 14.000
 
 NoClip.Name = "NoClip"
 NoClip.Parent = MainTab
@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function XYRGPIE_fake_script() -- ScriptUi.CloseAndHide 
+local function CQONK_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function XYRGPIE_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(XYRGPIE_fake_script)()
-local function VOHCZ_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(CQONK_fake_script)()
+local function TEUYN_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,9 +343,9 @@ local function VOHCZ_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(VOHCZ_fake_script)()
-local function WQDRXR_fake_script() -- WalkSpeed.WalkSpeed 
-	local script = Instance.new('LocalScript', WalkSpeed)
+coroutine.wrap(TEUYN_fake_script)()
+local function ZRHYQ_fake_script() -- gui2lua10.WalkSpeed 
+	local script = Instance.new('LocalScript', gui2lua10)
 
 	local Players = game:GetService("Players")
 	
@@ -394,8 +394,8 @@ local function WQDRXR_fake_script() -- WalkSpeed.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(WQDRXR_fake_script)()
-local function SARXSGK_fake_script() -- NoClip.NoClip 
+coroutine.wrap(ZRHYQ_fake_script)()
+local function YZFL_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function SARXSGK_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(SARXSGK_fake_script)()
-local function ADTQBU_fake_script() -- Fly.LocalScript 
+coroutine.wrap(YZFL_fake_script)()
+local function HZSIAK_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function ADTQBU_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(ADTQBU_fake_script)()
-local function TAQJIB_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(HZSIAK_fake_script)()
+local function OPZOS_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function TAQJIB_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(TAQJIB_fake_script)()
-local function ABJDB_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(OPZOS_fake_script)()
+local function WUKECUI_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,107 +725,113 @@ local function ABJDB_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(ABJDB_fake_script)()
-local function SAGNRZZ_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(WUKECUI_fake_script)()
+local function EZWTHV_fake_script() -- ESPButton_2.LocalScript 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
+	-- ESP Toggle – shows Name, Distance & Health for all other players
 	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
 	
 	local localPlayer = Players.LocalPlayer
-	local playerGui = localPlayer:WaitForChild("PlayerGui")
-	local espButton
+	local espButton = script.Parent  -- the TextButton inside ESPPage
 	
-	if script.Parent:IsA("GuiButton") then
-		espButton = script.Parent
-	else
-		local screenGui = Instance.new("ScreenGui")
-		screenGui.Name = "PlayerESPGui"
-		screenGui.ResetOnSpawn = false
-		screenGui.Parent = playerGui
-	
-		espButton = Instance.new("TextButton")
-		espButton.Name = "ESPButton"
-		espButton.Size = UDim2.fromOffset(150, 40)
-		espButton.Position = UDim2.fromOffset(20, 150)
-		espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
-		espButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-		espButton.TextSize = 16
-		espButton.Text = "Player ESP"
-		espButton.Parent = screenGui
-	end
+	-- Configuration – tweak these to your liking
+	local CONFIG = {
+		FillColor = Color3.fromRGB(255, 70, 70),      -- red glow
+		OutlineColor = Color3.fromRGB(255, 255, 255),
+		FillTransparency = 0.65,
+		OutlineTransparency = 0,
+		DepthMode = Enum.HighlightDepthMode.AlwaysOnTop,
+		TagSize = UDim2.fromOffset(280, 55),          -- slightly bigger to fit health
+		TagOffset = Vector3.new(0, 3, 0),
+		UpdateInterval = 0.2,                         -- update every 0.2s
+	}
 	
 	local espEnabled = false
-	local highlights = {}
+	local highlights = {}  -- player -> {highlight, nameTag, nameLabel}
 	
+	-- ------------------------------------------------
+	--  Remove ESP from a single player
 	local function removeHighlight(player)
-		local playerEsp = highlights[player]
-		if playerEsp then
-			playerEsp.highlight:Destroy()
-			playerEsp.nameTag:Destroy()
+		local data = highlights[player]
+		if data then
+			if data.highlight then data.highlight:Destroy() end
+			if data.nameTag then data.nameTag:Destroy() end
 			highlights[player] = nil
 		end
 	end
 	
+	-- ------------------------------------------------
+	--  Add ESP to a player (only if not local)
 	local function addHighlight(player)
-		if player == localPlayer or not espEnabled then
-			return
-		end
+		if player == localPlayer or not espEnabled then return end
 	
-		removeHighlight(player)
+		removeHighlight(player)  -- clean any stale instances
 	
 		local character = player.Character
-		if not character then
-			return
-		end
+		if not character then return end
 	
+		local head = character:FindFirstChild("Head")
+		local humanoid = character:FindFirstChildOfClass("Humanoid")
+		if not head or not humanoid then return end
+	
+		-- 1. Highlight glow
 		local highlight = Instance.new("Highlight")
 		highlight.Name = "PlayerHighlight"
 		highlight.Adornee = character
-		highlight.FillColor = Color3.fromRGB(255, 70, 70)
-		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-		highlight.FillTransparency = 0.65
-		highlight.OutlineTransparency = 0
-		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+		highlight.FillColor = CONFIG.FillColor
+		highlight.OutlineColor = CONFIG.OutlineColor
+		highlight.FillTransparency = CONFIG.FillTransparency
+		highlight.OutlineTransparency = CONFIG.OutlineTransparency
+		highlight.DepthMode = CONFIG.DepthMode
 		highlight.Parent = character
 	
+		-- 2. BillboardGui with name, distance, health
 		local nameTag = Instance.new("BillboardGui")
 		nameTag.Name = "PlayerNameTag"
-		nameTag.Adornee = character:FindFirstChild("Head") or character:FindFirstChildWhichIsA("BasePart")
+		nameTag.Adornee = head
 		nameTag.AlwaysOnTop = true
-		nameTag.Size = UDim2.fromOffset(200, 32)
-		nameTag.StudsOffset = Vector3.new(0, 3, 0)
+		nameTag.Size = CONFIG.TagSize
+		nameTag.StudsOffset = CONFIG.TagOffset
 		nameTag.Parent = character
 	
 		local nameLabel = Instance.new("TextLabel")
+		nameLabel.Name = "PlayerName"
 		nameLabel.BackgroundTransparency = 1
 		nameLabel.Size = UDim2.fromScale(1, 1)
 		nameLabel.Font = Enum.Font.GothamBold
-		nameLabel.Text = player.DisplayName .. " (" .. player.Name .. ")"
 		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		nameLabel.TextSize = 14
 		nameLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 		nameLabel.TextStrokeTransparency = 0
 		nameLabel.Parent = nameTag
 	
+		-- Store everything
 		highlights[player] = {
 			highlight = highlight,
 			nameTag = nameTag,
+			nameLabel = nameLabel,
+			humanoid = humanoid,   -- keep reference to update health quickly
 		}
 	end
 	
+	-- ------------------------------------------------
+	--  Button appearance update
 	local function updateButton()
 		if espEnabled then
-			espButton.Text = "Player ESP: ON"
-			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
+			espButton.Text = "ESP: ON"
+			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)  -- green
 		else
 			espButton.Text = "Player ESP"
-			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165) -- purple
 		end
 	end
 	
+	-- ------------------------------------------------
+	--  Toggle ESP on/off
 	local function setESP(enabled)
 		espEnabled = enabled
-	
 		if espEnabled then
 			for _, player in Players:GetPlayers() do
 				addHighlight(player)
@@ -835,32 +841,89 @@ local function SAGNRZZ_fake_script() -- ESPButton_2.LocalScript
 				removeHighlight(player)
 			end
 		end
-	
 		updateButton()
 	end
 	
+	-- ------------------------------------------------
+	--  Button click handler
 	espButton.Activated:Connect(function()
 		setESP(not espEnabled)
 	end)
 	
+	-- ------------------------------------------------
+	--  Watch for new players and respawns
 	local function watchPlayer(player)
-		if player == localPlayer then
-			return
-		end
-	
+		if player == localPlayer then return end
 		player.CharacterAdded:Connect(function()
-			addHighlight(player)
+			if espEnabled then
+				task.wait(0.2)  -- wait for character to load fully
+				addHighlight(player)
+			end
 		end)
 	end
 	
 	Players.PlayerAdded:Connect(watchPlayer)
 	Players.PlayerRemoving:Connect(removeHighlight)
 	
+	-- Apply to existing players
 	for _, player in Players:GetPlayers() do
 		watchPlayer(player)
 	end
 	
-	updateButton()
+	-- ------------------------------------------------
+	--  Distance + Health updater (throttled)
+	local function updateLabels()
+		if not espEnabled then return end
 	
+		local myCharacter = localPlayer.Character
+		local myRoot = myCharacter and myCharacter:FindFirstChild("HumanoidRootPart")
+		if not myRoot then return end
+	
+		for player, data in pairs(highlights) do
+			local character = player.Character
+			local root = character and character:FindFirstChild("HumanoidRootPart")
+			local hum = data.humanoid  -- we stored it when adding
+	
+			-- If character changed, update humanoid reference
+			if not hum or hum.Parent ~= character then
+				hum = character and character:FindFirstChildOfClass("Humanoid")
+				if hum then
+					data.humanoid = hum
+				else
+					-- humanoid missing – skip this player
+					goto continue
+				end
+			end
+	
+			if root and data.nameLabel then
+				local distance = (myRoot.Position - root.Position).Magnitude
+				local health = math.floor(hum.Health)
+				local maxHealth = hum.MaxHealth
+				data.nameLabel.Text = string.format(
+					"%s (@%s)\n[%d studs] ❤️ %d/%d",
+					player.DisplayName,
+					player.Name,
+					math.floor(distance),
+					health,
+					maxHealth
+				)
+			end
+	
+			::continue::
+		end
+	end
+	
+	-- Run on Heartbeat, but only every CONFIG.UpdateInterval seconds
+	local lastUpdate = 0
+	RunService.Heartbeat:Connect(function(deltaTime)
+		lastUpdate = lastUpdate + deltaTime
+		if lastUpdate >= CONFIG.UpdateInterval then
+			lastUpdate = 0
+			updateLabels()
+		end
+	end)
+	
+	-- Initial state: ESP off
+	updateButton()
 end
-coroutine.wrap(SAGNRZZ_fake_script)()
+coroutine.wrap(EZWTHV_fake_script)()
