@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function GYKFK_fake_script() -- ScriptUi.CloseAndHide 
+local function XYRGPIE_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function GYKFK_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(GYKFK_fake_script)()
-local function JNMOOVQ_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(XYRGPIE_fake_script)()
+local function VOHCZ_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function JNMOOVQ_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(JNMOOVQ_fake_script)()
-local function OVXI_fake_script() -- WalkSpeed.WalkSpeed 
+coroutine.wrap(VOHCZ_fake_script)()
+local function WQDRXR_fake_script() -- WalkSpeed.WalkSpeed 
 	local script = Instance.new('LocalScript', WalkSpeed)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function OVXI_fake_script() -- WalkSpeed.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(OVXI_fake_script)()
-local function MVPROVK_fake_script() -- NoClip.NoClip 
+coroutine.wrap(WQDRXR_fake_script)()
+local function SARXSGK_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function MVPROVK_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(MVPROVK_fake_script)()
-local function JCYHSA_fake_script() -- Fly.LocalScript 
+coroutine.wrap(SARXSGK_fake_script)()
+local function ADTQBU_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function JCYHSA_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(JCYHSA_fake_script)()
-local function EMKX_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(ADTQBU_fake_script)()
+local function TAQJIB_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function EMKX_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(EMKX_fake_script)()
-local function XMOYQAQ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(TAQJIB_fake_script)()
+local function ABJDB_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,37 +725,16 @@ local function XMOYQAQ_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(XMOYQAQ_fake_script)()
-local function NJLD_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(ABJDB_fake_script)()
+local function SAGNRZZ_fake_script() -- ESPButton_2.LocalScript 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
-	-- Player ESP with Toggle Button
-	-- Place this script in a ServerScriptService or a LocalScript inside StarterPlayerScripts
-	
 	local Players = game:GetService("Players")
-	local RunService = game:GetService("RunService")
 	
 	local localPlayer = Players.LocalPlayer
 	local playerGui = localPlayer:WaitForChild("PlayerGui")
-	
-	-- Configuration
-	local CONFIG = {
-		ButtonPosition = UDim2.fromOffset(20, 150),
-		ButtonSize = UDim2.fromOffset(150, 40),
-		ButtonColor = Color3.fromRGB(165, 50, 165),
-		ButtonText = "Player ESP",
-		FillColor = Color3.fromRGB(255, 70, 70),
-		OutlineColor = Color3.fromRGB(255, 255, 255),
-		FillTransparency = 0.65,
-		OutlineTransparency = 0,
-		DepthMode = Enum.HighlightDepthMode.AlwaysOnTop,
-		TagSize = UDim2.fromOffset(250, 45),
-		TagOffset = Vector3.new(0, 3, 0),
-		UpdateInterval = 0.2, -- seconds between distance updates
-	}
-	
-	-- Create GUI and button if not already present
 	local espButton
+	
 	if script.Parent:IsA("GuiButton") then
 		espButton = script.Parent
 	else
@@ -766,67 +745,62 @@ local function NJLD_fake_script() -- ESPButton_2.LocalScript
 	
 		espButton = Instance.new("TextButton")
 		espButton.Name = "ESPButton"
-		espButton.Size = CONFIG.ButtonSize
-		espButton.Position = CONFIG.ButtonPosition
-		espButton.BackgroundColor3 = CONFIG.ButtonColor
+		espButton.Size = UDim2.fromOffset(150, 40)
+		espButton.Position = UDim2.fromOffset(20, 150)
+		espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
 		espButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 		espButton.TextSize = 16
-		espButton.Text = CONFIG.ButtonText
+		espButton.Text = "Player ESP"
 		espButton.Parent = screenGui
 	end
 	
 	local espEnabled = false
-	local highlights = {} -- player -> {highlight, nameTag, nameLabel}
+	local highlights = {}
 	
-	-- Remove ESP from a player
 	local function removeHighlight(player)
-		local data = highlights[player]
-		if data then
-			if data.highlight then data.highlight:Destroy() end
-			if data.nameTag then data.nameTag:Destroy() end
+		local playerEsp = highlights[player]
+		if playerEsp then
+			playerEsp.highlight:Destroy()
+			playerEsp.nameTag:Destroy()
 			highlights[player] = nil
 		end
 	end
 	
-	-- Add ESP to a player
 	local function addHighlight(player)
-		if player == localPlayer or not espEnabled then return end
+		if player == localPlayer or not espEnabled then
+			return
+		end
 	
-		removeHighlight(player) -- clean previous if any
+		removeHighlight(player)
 	
 		local character = player.Character
-		if not character then return end
+		if not character then
+			return
+		end
 	
-		local head = character:FindFirstChild("Head")
-		local humanoid = character:FindFirstChildOfClass("Humanoid")
-		if not head or not humanoid then return end
-	
-		-- Highlight
 		local highlight = Instance.new("Highlight")
 		highlight.Name = "PlayerHighlight"
 		highlight.Adornee = character
-		highlight.FillColor = CONFIG.FillColor
-		highlight.OutlineColor = CONFIG.OutlineColor
-		highlight.FillTransparency = CONFIG.FillTransparency
-		highlight.OutlineTransparency = CONFIG.OutlineTransparency
-		highlight.DepthMode = CONFIG.DepthMode
+		highlight.FillColor = Color3.fromRGB(255, 70, 70)
+		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+		highlight.FillTransparency = 0.65
+		highlight.OutlineTransparency = 0
+		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 		highlight.Parent = character
 	
-		-- BillboardGui for name tag
 		local nameTag = Instance.new("BillboardGui")
 		nameTag.Name = "PlayerNameTag"
-		nameTag.Adornee = head
+		nameTag.Adornee = character:FindFirstChild("Head") or character:FindFirstChildWhichIsA("BasePart")
 		nameTag.AlwaysOnTop = true
-		nameTag.Size = CONFIG.TagSize
-		nameTag.StudsOffset = CONFIG.TagOffset
+		nameTag.Size = UDim2.fromOffset(200, 32)
+		nameTag.StudsOffset = Vector3.new(0, 3, 0)
 		nameTag.Parent = character
 	
 		local nameLabel = Instance.new("TextLabel")
-		nameLabel.Name = "PlayerName"
 		nameLabel.BackgroundTransparency = 1
 		nameLabel.Size = UDim2.fromScale(1, 1)
 		nameLabel.Font = Enum.Font.GothamBold
-		nameLabel.Text = player.DisplayName .. " (@" .. player.Name .. ")"
+		nameLabel.Text = player.DisplayName .. " (" .. player.Name .. ")"
 		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		nameLabel.TextSize = 14
 		nameLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
@@ -836,24 +810,22 @@ local function NJLD_fake_script() -- ESPButton_2.LocalScript
 		highlights[player] = {
 			highlight = highlight,
 			nameTag = nameTag,
-			nameLabel = nameLabel,
 		}
 	end
 	
-	-- Update button appearance
 	local function updateButton()
 		if espEnabled then
 			espButton.Text = "Player ESP: ON"
 			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
 		else
-			espButton.Text = CONFIG.ButtonText
-			espButton.BackgroundColor3 = CONFIG.ButtonColor
+			espButton.Text = "Player ESP"
+			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
 		end
 	end
 	
-	-- Toggle ESP on/off
 	local function setESP(enabled)
 		espEnabled = enabled
+	
 		if espEnabled then
 			for _, player in Players:GetPlayers() do
 				addHighlight(player)
@@ -863,67 +835,32 @@ local function NJLD_fake_script() -- ESPButton_2.LocalScript
 				removeHighlight(player)
 			end
 		end
+	
 		updateButton()
 	end
 	
-	-- Button click
 	espButton.Activated:Connect(function()
 		setESP(not espEnabled)
 	end)
 	
-	-- Watch for new players and character respawns
 	local function watchPlayer(player)
-		if player == localPlayer then return end
+		if player == localPlayer then
+			return
+		end
+	
 		player.CharacterAdded:Connect(function()
-			if espEnabled then
-				task.wait(0.2) -- wait for character to fully load
-				addHighlight(player)
-			end
+			addHighlight(player)
 		end)
 	end
 	
 	Players.PlayerAdded:Connect(watchPlayer)
 	Players.PlayerRemoving:Connect(removeHighlight)
 	
-	-- Apply to existing players
 	for _, player in Players:GetPlayers() do
 		watchPlayer(player)
 	end
 	
-	-- Distance updater (throttled)
-	local function updateDistances()
-		if not espEnabled then return end
-	
-		local myCharacter = localPlayer.Character
-		local myRoot = myCharacter and myCharacter:FindFirstChild("HumanoidRootPart")
-		if not myRoot then return end
-	
-		for player, data in pairs(highlights) do
-			local character = player.Character
-			local root = character and character:FindFirstChild("HumanoidRootPart")
-			if root and data.nameLabel then
-				local distance = (myRoot.Position - root.Position).Magnitude
-				data.nameLabel.Text = string.format(
-					"%s (@%s)\n[%d studs]",
-					player.DisplayName,
-					player.Name,
-					math.floor(distance)
-				)
-			end
-		end
-	end
-	
-	-- Use Heartbeat instead of RenderStepped for performance, and throttle
-	local lastUpdate = 0
-	RunService.Heartbeat:Connect(function(deltaTime)
-		lastUpdate = lastUpdate + deltaTime
-		if lastUpdate >= CONFIG.UpdateInterval then
-			lastUpdate = 0
-			updateDistances()
-		end
-	end)
-	
-	-- Initial button state
 	updateButton()
+	
 end
-coroutine.wrap(NJLD_fake_script)()
+coroutine.wrap(SAGNRZZ_fake_script)()
