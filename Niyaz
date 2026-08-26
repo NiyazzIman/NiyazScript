@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function MSWTC_fake_script() -- ScriptUi.CloseAndHide 
+local function SSBWIU_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function MSWTC_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(MSWTC_fake_script)()
-local function WAVVGR_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(SSBWIU_fake_script)()
+local function ZDDJWV_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function WAVVGR_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(WAVVGR_fake_script)()
-local function EVLRBJ_fake_script() -- WalkSpeed.WalkSpeed 
+coroutine.wrap(ZDDJWV_fake_script)()
+local function NSLIWML_fake_script() -- WalkSpeed.WalkSpeed 
 	local script = Instance.new('LocalScript', WalkSpeed)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function EVLRBJ_fake_script() -- WalkSpeed.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(EVLRBJ_fake_script)()
-local function NSSL_fake_script() -- NoClip.NoClip 
+coroutine.wrap(NSLIWML_fake_script)()
+local function JNTNNY_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function NSSL_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(NSSL_fake_script)()
-local function WDEKJ_fake_script() -- Fly.LocalScript 
+coroutine.wrap(JNTNNY_fake_script)()
+local function TXROXY_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function WDEKJ_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(WDEKJ_fake_script)()
-local function BECMAM_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(TXROXY_fake_script)()
+local function HRWY_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function BECMAM_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(BECMAM_fake_script)()
-local function IFKPD_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(HRWY_fake_script)()
+local function MXBU_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,14 +725,35 @@ local function IFKPD_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(IFKPD_fake_script)()
-local function GZDBHSD_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(MXBU_fake_script)()
+local function BRYITNA_fake_script() -- ESPButton_2.LocalScript 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
 	local Players = game:GetService("Players")
 	
 	local localPlayer = Players.LocalPlayer
-	local espButton = script.Parent
+	local playerGui = localPlayer:WaitForChild("PlayerGui")
+	local espButton
+	
+	if script.Parent:IsA("GuiButton") then
+		espButton = script.Parent
+	else
+		local screenGui = Instance.new("ScreenGui")
+		screenGui.Name = "PlayerESPGui"
+		screenGui.ResetOnSpawn = false
+		screenGui.Parent = playerGui
+	
+		espButton = Instance.new("TextButton")
+		espButton.Name = "ESPButton"
+		espButton.Size = UDim2.fromOffset(150, 40)
+		espButton.Position = UDim2.fromOffset(20, 150)
+		espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
+		espButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+		espButton.TextSize = 16
+		espButton.Text = "Player ESP"
+		espButton.Parent = screenGui
+	end
+	
 	local espEnabled = false
 	local highlights = {}
 	
@@ -818,12 +839,8 @@ local function GZDBHSD_fake_script() -- ESPButton_2.LocalScript
 		updateButton()
 	end
 	
-	espButton.Active = true
-	espButton.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1
-			or input.UserInputType == Enum.UserInputType.Touch then
-			setESP(not espEnabled)
-		end
+	espButton.Activated:Connect(function()
+		setESP(not espEnabled)
 	end)
 	
 	local function watchPlayer(player)
@@ -846,4 +863,4 @@ local function GZDBHSD_fake_script() -- ESPButton_2.LocalScript
 	updateButton()
 	
 end
-coroutine.wrap(GZDBHSD_fake_script)()
+coroutine.wrap(BRYITNA_fake_script)()
