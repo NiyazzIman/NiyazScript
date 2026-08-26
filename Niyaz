@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function AOXENHX_fake_script() -- ScriptUi.CloseAndHide 
+local function WWJNNJN_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function AOXENHX_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(AOXENHX_fake_script)()
-local function ZVQILV_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(WWJNNJN_fake_script)()
+local function EWPJ_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function ZVQILV_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(ZVQILV_fake_script)()
-local function VIVFWU_fake_script() -- WalkSpeed.WalkSpeed 
+coroutine.wrap(EWPJ_fake_script)()
+local function TNCQM_fake_script() -- WalkSpeed.WalkSpeed 
 	local script = Instance.new('LocalScript', WalkSpeed)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function VIVFWU_fake_script() -- WalkSpeed.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(VIVFWU_fake_script)()
-local function CHGVEZU_fake_script() -- NoClip.NoClip 
+coroutine.wrap(TNCQM_fake_script)()
+local function XKUI_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function CHGVEZU_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(CHGVEZU_fake_script)()
-local function ZVBDMU_fake_script() -- Fly.LocalScript 
+coroutine.wrap(XKUI_fake_script)()
+local function BMCG_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function ZVBDMU_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(ZVBDMU_fake_script)()
-local function BDWYNGS_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(BMCG_fake_script)()
+local function ZVPFRA_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function BDWYNGS_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(BDWYNGS_fake_script)()
-local function AUOZ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(ZVPFRA_fake_script)()
+local function YPEQY_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,8 +725,8 @@ local function AUOZ_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(AUOZ_fake_script)()
-local function DOVU_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(YPEQY_fake_script)()
+local function LUVEBY_fake_script() -- ESPButton_2.LocalScript 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
 	local Players = game:GetService("Players")
@@ -846,4 +846,4 @@ local function DOVU_fake_script() -- ESPButton_2.LocalScript
 	updateButton()
 	
 end
-coroutine.wrap(DOVU_fake_script)()
+coroutine.wrap(LUVEBY_fake_script)()
