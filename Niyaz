@@ -3,7 +3,6 @@
 
 -- Instances:
 
-local ScreenGui = Instance.new("ScreenGui")
 local ScriptUi = Instance.new("Frame")
 local MainTab = Instance.new("Frame")
 local gui2lua10 = Instance.new("TextButton")
@@ -30,11 +29,8 @@ local ESPButton_2 = Instance.new("TextButton")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
 ScriptUi.Name = "ScriptUi"
-ScriptUi.Parent = ScreenGui
+ScriptUi.Parent = game.StarterGui.ScreenGui
 ScriptUi.AnchorPoint = Vector2.new(0.5, 0.5)
 ScriptUi.BackgroundColor3 = Color3.fromRGB(255, 62, 252)
 ScriptUi.BackgroundTransparency = 100.000
@@ -253,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function FUNF_fake_script() -- ScriptUi.CloseAndHide 
+local function YBTJ_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -307,8 +303,8 @@ local function FUNF_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(FUNF_fake_script)()
-local function MOUYEM_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(YBTJ_fake_script)()
+local function KAWF_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -347,8 +343,8 @@ local function MOUYEM_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(MOUYEM_fake_script)()
-local function FYXXBI_fake_script() -- gui2lua10.WalkSpeed 
+coroutine.wrap(KAWF_fake_script)()
+local function YWKJ_fake_script() -- gui2lua10.WalkSpeed 
 	local script = Instance.new('LocalScript', gui2lua10)
 
 	local Players = game:GetService("Players")
@@ -398,8 +394,8 @@ local function FYXXBI_fake_script() -- gui2lua10.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(FYXXBI_fake_script)()
-local function UTEQLXQ_fake_script() -- NoClip.NoClip 
+coroutine.wrap(YWKJ_fake_script)()
+local function AECO_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -466,8 +462,8 @@ local function UTEQLXQ_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(UTEQLXQ_fake_script)()
-local function UATCIY_fake_script() -- Fly.LocalScript 
+coroutine.wrap(AECO_fake_script)()
+local function WVSN_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -601,8 +597,8 @@ local function UATCIY_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(UATCIY_fake_script)()
-local function EIKTWU_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(WVSN_fake_script)()
+local function DCXTFZ_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -665,8 +661,8 @@ local function EIKTWU_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(EIKTWU_fake_script)()
-local function WVAEUS_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(DCXTFZ_fake_script)()
+local function GWENJ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -729,111 +725,83 @@ local function WVAEUS_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(WVAEUS_fake_script)()
-local function RQMNZD_fake_script() -- ESPButton_2.ESP 
+coroutine.wrap(GWENJ_fake_script)()
+local function QQIF_fake_script() -- ESPButton_2.ESP 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
-	-- ESP – Name, Distance & Health (debug version)
-	print("ESP script loaded")
-	
 	local Players = game:GetService("Players")
-	local RunService = game:GetService("RunService")
+	
 	local localPlayer = Players.LocalPlayer
 	local espButton = script.Parent
-	
-	-- Configuration
-	local CONFIG = {
-		FillColor = Color3.fromRGB(255, 70, 70),
-		OutlineColor = Color3.fromRGB(255, 255, 255),
-		FillTransparency = 0.65,
-		OutlineTransparency = 0,
-		DepthMode = Enum.HighlightDepthMode.AlwaysOnTop,
-		TagSize = UDim2.fromOffset(280, 55),
-		TagOffset = Vector3.new(0, 3.5, 0),   -- slightly higher
-		UpdateInterval = 0.2,
-	}
-	
 	local espEnabled = false
-	local highlights = {}
+	local playerEspObjects = {}
 	
-	-- Remove ESP
-	local function removeHighlight(player)
-		local data = highlights[player]
-		if data then
-			if data.highlight then data.highlight:Destroy() end
-			if data.nameTag then data.nameTag:Destroy() end
-			highlights[player] = nil
+	local function removeESP(player)
+		local espObjects = playerEspObjects[player]
+		if not espObjects then
+			return
 		end
+	
+		if espObjects.highlight then
+			espObjects.highlight:Destroy()
+		end
+		if espObjects.nameTag then
+			espObjects.nameTag:Destroy()
+		end
+	
+		playerEspObjects[player] = nil
 	end
 	
-	-- Add ESP to a player
-	local function addHighlight(player)
-		if player == localPlayer or not espEnabled then return end
+	local function addESP(player)
+		if player == localPlayer or not espEnabled then
+			return
+		end
 	
-		removeHighlight(player)
+		removeESP(player)
 	
 		local character = player.Character
 		if not character then
-			print("No character for", player.Name)
 			return
 		end
 	
-		local head = character:FindFirstChild("Head")
-		local humanoid = character:FindFirstChildOfClass("Humanoid")
-		if not head or not humanoid then
-			print("No head or humanoid for", player.Name)
-			return
-		end
-	
-		-- 1. Red glow
 		local highlight = Instance.new("Highlight")
-		highlight.Name = "PlayerHighlight"
+		highlight.Name = "PlayerESPHighlight"
 		highlight.Adornee = character
-		highlight.FillColor = CONFIG.FillColor
-		highlight.OutlineColor = CONFIG.OutlineColor
-		highlight.FillTransparency = CONFIG.FillTransparency
-		highlight.OutlineTransparency = CONFIG.OutlineTransparency
-		highlight.DepthMode = CONFIG.DepthMode
+		highlight.FillColor = Color3.fromRGB(255, 70, 70)
+		highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+		highlight.FillTransparency = 0.65
+		highlight.OutlineTransparency = 0
+		highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
 		highlight.Parent = character
 	
-		-- 2. BillboardGui
 		local nameTag = Instance.new("BillboardGui")
-		nameTag.Name = "PlayerNameTag"
-		nameTag.Adornee = head
+		nameTag.Name = "PlayerESPNameTag"
+		nameTag.Adornee = character:FindFirstChild("Head") or character:FindFirstChildWhichIsA("BasePart")
 		nameTag.AlwaysOnTop = true
-		nameTag.Size = CONFIG.TagSize
-		nameTag.StudsOffset = CONFIG.TagOffset
+		nameTag.Size = UDim2.fromOffset(220, 32)
+		nameTag.StudsOffset = Vector3.new(0, 3, 0)
 		nameTag.Parent = character
 	
 		local nameLabel = Instance.new("TextLabel")
-		nameLabel.Name = "PlayerName"
 		nameLabel.BackgroundTransparency = 1
 		nameLabel.Size = UDim2.fromScale(1, 1)
 		nameLabel.Font = Enum.Font.GothamBold
+		nameLabel.Text = player.DisplayName .. " (" .. player.Name .. ")"
 		nameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		nameLabel.TextSize = 14
 		nameLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 		nameLabel.TextStrokeTransparency = 0
 		nameLabel.Parent = nameTag
 	
-		-- === DEBUG: set a test text immediately ===
-		nameLabel.Text = "TEST LABEL"
-		print("Label created for", player.Name, "with text:", nameLabel.Text)
-	
-		highlights[player] = {
+		playerEspObjects[player] = {
 			highlight = highlight,
 			nameTag = nameTag,
-			nameLabel = nameLabel,
-			humanoid = humanoid,
 		}
-	
-		print("ESP added for", player.Name)
 	end
 	
-	-- Button appearance
 	local function updateButton()
 		if espEnabled then
-			espButton.Text = "ESP: ON"
+			espButton.Text = "Player ESP: ON"
 			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
 		else
 			espButton.Text = "Player ESP"
@@ -841,110 +809,44 @@ local function RQMNZD_fake_script() -- ESPButton_2.ESP
 		end
 	end
 	
-	-- Toggle
 	local function setESP(enabled)
 		espEnabled = enabled
+	
 		if espEnabled then
-			print("ESP turned ON")
 			for _, player in Players:GetPlayers() do
-				addHighlight(player)
+				addESP(player)
 			end
 		else
-			print("ESP turned OFF")
-			for player in pairs(highlights) do
-				removeHighlight(player)
+			for player in pairs(playerEspObjects) do
+				removeESP(player)
 			end
 		end
+	
 		updateButton()
 	end
 	
-	-- Button click
+	local function watchPlayer(player)
+		if player == localPlayer then
+			return
+		end
+	
+		player.CharacterAdded:Connect(function()
+			addESP(player)
+		end)
+	end
+	
 	espButton.Activated:Connect(function()
 		setESP(not espEnabled)
 	end)
 	
-	-- Watch players
-	local function watchPlayer(player)
-		if player == localPlayer then return end
-		player.CharacterAdded:Connect(function()
-			if espEnabled then
-				task.wait(0.2)
-				addHighlight(player)
-			end
-		end)
-	end
-	
 	Players.PlayerAdded:Connect(watchPlayer)
-	Players.PlayerRemoving:Connect(removeHighlight)
+	Players.PlayerRemoving:Connect(removeESP)
 	
 	for _, player in Players:GetPlayers() do
 		watchPlayer(player)
 	end
 	
-	-- Distance + Health updater
-	local function updateLabels()
-		if not espEnabled then
-			-- print("ESP disabled, skipping update")  -- uncomment if needed
-			return
-		end
-	
-		local myCharacter = localPlayer.Character
-		local myRoot = myCharacter and myCharacter:FindFirstChild("HumanoidRootPart")
-		if not myRoot then
-			-- print("No myRoot") 
-			return
-		end
-	
-		local count = 0
-		for player, data in pairs(highlights) do
-			local character = player.Character
-			local root = character and character:FindFirstChild("HumanoidRootPart")
-			local hum = data.humanoid
-	
-			if not hum or hum.Parent ~= character then
-				hum = character and character:FindFirstChildOfClass("Humanoid")
-				if hum then
-					data.humanoid = hum
-				else
-					-- no humanoid, skip
-					continue
-				end
-			end
-	
-			if root and data.nameLabel then
-				local distance = (myRoot.Position - root.Position).Magnitude
-				local health = math.floor(hum.Health)
-				local maxHealth = hum.MaxHealth
-				data.nameLabel.Text = string.format(
-					"%s (@%s)\n[%d studs] ❤️ %d/%d",
-					player.DisplayName,
-					player.Name,
-					math.floor(distance),
-					health,
-					maxHealth
-				)
-				count = count + 1
-			else
-				-- If root missing, set a fallback text to debug
-				if data.nameLabel then
-					data.nameLabel.Text = "Waiting for character..."
-				end
-			end
-		end
-		-- Uncomment to see how many labels are updated each cycle
-		-- print("Updated", count, "labels")
-	end
-	
-	local lastUpdate = 0
-	RunService.Heartbeat:Connect(function(deltaTime)
-		lastUpdate = lastUpdate + deltaTime
-		if lastUpdate >= CONFIG.UpdateInterval then
-			lastUpdate = 0
-			updateLabels()
-		end
-	end)
-	
 	updateButton()
-	print("ESP script ready – click the button to toggle")
+	
 end
-coroutine.wrap(RQMNZD_fake_script)()
+coroutine.wrap(QQIF_fake_script)()
