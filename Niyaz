@@ -249,7 +249,7 @@ ESPButton_2.TextSize = 14.000
 
 -- Scripts:
 
-local function CQONK_fake_script() -- ScriptUi.CloseAndHide 
+local function SHQXTJZ_fake_script() -- ScriptUi.CloseAndHide 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -303,8 +303,8 @@ local function CQONK_fake_script() -- ScriptUi.CloseAndHide
 	end)
 	
 end
-coroutine.wrap(CQONK_fake_script)()
-local function TEUYN_fake_script() -- ScriptUi.Tabs 
+coroutine.wrap(SHQXTJZ_fake_script)()
+local function IHYUG_fake_script() -- ScriptUi.Tabs 
 	local script = Instance.new('LocalScript', ScriptUi)
 
 	local frame = script.Parent
@@ -343,8 +343,8 @@ local function TEUYN_fake_script() -- ScriptUi.Tabs
 	showPage(mainPage, mainTab)
 	
 end
-coroutine.wrap(TEUYN_fake_script)()
-local function ZRHYQ_fake_script() -- gui2lua10.WalkSpeed 
+coroutine.wrap(IHYUG_fake_script)()
+local function GOJBK_fake_script() -- gui2lua10.WalkSpeed 
 	local script = Instance.new('LocalScript', gui2lua10)
 
 	local Players = game:GetService("Players")
@@ -394,8 +394,8 @@ local function ZRHYQ_fake_script() -- gui2lua10.WalkSpeed
 	
 	updateWalkSpeed()
 end
-coroutine.wrap(ZRHYQ_fake_script)()
-local function YZFL_fake_script() -- NoClip.NoClip 
+coroutine.wrap(GOJBK_fake_script)()
+local function XWGZNX_fake_script() -- NoClip.NoClip 
 	local script = Instance.new('LocalScript', NoClip)
 
 	local Players = game:GetService("Players")
@@ -462,8 +462,8 @@ local function YZFL_fake_script() -- NoClip.NoClip
 	setNoClip(false)
 	
 end
-coroutine.wrap(YZFL_fake_script)()
-local function HZSIAK_fake_script() -- Fly.LocalScript 
+coroutine.wrap(XWGZNX_fake_script)()
+local function HDKFRJ_fake_script() -- Fly.LocalScript 
 	local script = Instance.new('LocalScript', Fly)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -597,8 +597,8 @@ local function HZSIAK_fake_script() -- Fly.LocalScript
 	end)
 	
 end
-coroutine.wrap(HZSIAK_fake_script)()
-local function OPZOS_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
+coroutine.wrap(HDKFRJ_fake_script)()
+local function CNRK_fake_script() -- WalkSpeedSlider.WalkSpeedSlider 
 	local script = Instance.new('LocalScript', WalkSpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -661,8 +661,8 @@ local function OPZOS_fake_script() -- WalkSpeedSlider.WalkSpeedSlider
 	updateWalkSpeed(speedTrack.AbsolutePosition.X)
 	
 end
-coroutine.wrap(OPZOS_fake_script)()
-local function WUKECUI_fake_script() -- FlySpeedSlider.FlySpeedSlider 
+coroutine.wrap(CNRK_fake_script)()
+local function VIKQ_fake_script() -- FlySpeedSlider.FlySpeedSlider 
 	local script = Instance.new('LocalScript', FlySpeedSlider)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -725,34 +725,34 @@ local function WUKECUI_fake_script() -- FlySpeedSlider.FlySpeedSlider
 	updateFlySpeed(speedTrack.AbsolutePosition.X + speedTrack.AbsoluteSize.X * ((flySpeed - minFlySpeed) / (maxFlySpeed - minFlySpeed)))
 	
 end
-coroutine.wrap(WUKECUI_fake_script)()
-local function EZWTHV_fake_script() -- ESPButton_2.LocalScript 
+coroutine.wrap(VIKQ_fake_script)()
+local function XVOS_fake_script() -- ESPButton_2.ESP 
 	local script = Instance.new('LocalScript', ESPButton_2)
 
-	-- ESP Toggle – shows Name, Distance & Health for all other players
+	-- ESP – Name, Distance & Health (for your existing UI)
+	print("ESP script loaded")  -- check output
+	
 	local Players = game:GetService("Players")
 	local RunService = game:GetService("RunService")
-	
 	local localPlayer = Players.LocalPlayer
-	local espButton = script.Parent  -- the TextButton inside ESPPage
+	local espButton = script.Parent  -- your existing button
 	
-	-- Configuration – tweak these to your liking
+	-- Configuration (tweak as you like)
 	local CONFIG = {
-		FillColor = Color3.fromRGB(255, 70, 70),      -- red glow
+		FillColor = Color3.fromRGB(255, 70, 70),
 		OutlineColor = Color3.fromRGB(255, 255, 255),
 		FillTransparency = 0.65,
 		OutlineTransparency = 0,
 		DepthMode = Enum.HighlightDepthMode.AlwaysOnTop,
-		TagSize = UDim2.fromOffset(280, 55),          -- slightly bigger to fit health
+		TagSize = UDim2.fromOffset(280, 55),
 		TagOffset = Vector3.new(0, 3, 0),
-		UpdateInterval = 0.2,                         -- update every 0.2s
+		UpdateInterval = 0.2,
 	}
 	
 	local espEnabled = false
-	local highlights = {}  -- player -> {highlight, nameTag, nameLabel}
+	local highlights = {}  -- player -> {highlight, nameTag, nameLabel, humanoid}
 	
-	-- ------------------------------------------------
-	--  Remove ESP from a single player
+	-- Remove ESP from a player
 	local function removeHighlight(player)
 		local data = highlights[player]
 		if data then
@@ -762,21 +762,26 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 		end
 	end
 	
-	-- ------------------------------------------------
-	--  Add ESP to a player (only if not local)
+	-- Add ESP to a player (skip local player)
 	local function addHighlight(player)
 		if player == localPlayer or not espEnabled then return end
 	
-		removeHighlight(player)  -- clean any stale instances
+		removeHighlight(player)  -- clean old instances
 	
 		local character = player.Character
-		if not character then return end
+		if not character then
+			print("No character for", player.Name)
+			return
+		end
 	
 		local head = character:FindFirstChild("Head")
 		local humanoid = character:FindFirstChildOfClass("Humanoid")
-		if not head or not humanoid then return end
+		if not head or not humanoid then
+			print("No head or humanoid for", player.Name)
+			return
+		end
 	
-		-- 1. Highlight glow
+		-- Red glow
 		local highlight = Instance.new("Highlight")
 		highlight.Name = "PlayerHighlight"
 		highlight.Adornee = character
@@ -787,7 +792,7 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 		highlight.DepthMode = CONFIG.DepthMode
 		highlight.Parent = character
 	
-		-- 2. BillboardGui with name, distance, health
+		-- Billboard with name, distance, health
 		local nameTag = Instance.new("BillboardGui")
 		nameTag.Name = "PlayerNameTag"
 		nameTag.Adornee = head
@@ -807,36 +812,37 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 		nameLabel.TextStrokeTransparency = 0
 		nameLabel.Parent = nameTag
 	
-		-- Store everything
 		highlights[player] = {
 			highlight = highlight,
 			nameTag = nameTag,
 			nameLabel = nameLabel,
-			humanoid = humanoid,   -- keep reference to update health quickly
+			humanoid = humanoid,
 		}
+	
+		print("ESP added for", player.Name)
 	end
 	
-	-- ------------------------------------------------
-	--  Button appearance update
+	-- Button appearance update
 	local function updateButton()
 		if espEnabled then
 			espButton.Text = "ESP: ON"
-			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)  -- green
+			espButton.BackgroundColor3 = Color3.fromRGB(30, 180, 80)
 		else
 			espButton.Text = "Player ESP"
-			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165) -- purple
+			espButton.BackgroundColor3 = Color3.fromRGB(165, 50, 165)
 		end
 	end
 	
-	-- ------------------------------------------------
-	--  Toggle ESP on/off
+	-- Toggle ESP
 	local function setESP(enabled)
 		espEnabled = enabled
 		if espEnabled then
+			print("ESP turned ON")
 			for _, player in Players:GetPlayers() do
 				addHighlight(player)
 			end
 		else
+			print("ESP turned OFF")
 			for player in pairs(highlights) do
 				removeHighlight(player)
 			end
@@ -844,19 +850,17 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 		updateButton()
 	end
 	
-	-- ------------------------------------------------
-	--  Button click handler
+	-- Button click
 	espButton.Activated:Connect(function()
 		setESP(not espEnabled)
 	end)
 	
-	-- ------------------------------------------------
-	--  Watch for new players and respawns
+	-- Watch for new players and respawns
 	local function watchPlayer(player)
 		if player == localPlayer then return end
 		player.CharacterAdded:Connect(function()
 			if espEnabled then
-				task.wait(0.2)  -- wait for character to load fully
+				task.wait(0.2)  -- wait for character to fully load
 				addHighlight(player)
 			end
 		end)
@@ -865,13 +869,12 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 	Players.PlayerAdded:Connect(watchPlayer)
 	Players.PlayerRemoving:Connect(removeHighlight)
 	
-	-- Apply to existing players
+	-- Apply to existing players (including those already in the game)
 	for _, player in Players:GetPlayers() do
 		watchPlayer(player)
 	end
 	
-	-- ------------------------------------------------
-	--  Distance + Health updater (throttled)
+	-- Distance + Health updater (throttled)
 	local function updateLabels()
 		if not espEnabled then return end
 	
@@ -882,16 +885,15 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 		for player, data in pairs(highlights) do
 			local character = player.Character
 			local root = character and character:FindFirstChild("HumanoidRootPart")
-			local hum = data.humanoid  -- we stored it when adding
+			local hum = data.humanoid
 	
-			-- If character changed, update humanoid reference
+			-- Refresh humanoid reference if character changed
 			if not hum or hum.Parent ~= character then
 				hum = character and character:FindFirstChildOfClass("Humanoid")
 				if hum then
 					data.humanoid = hum
 				else
-					-- humanoid missing – skip this player
-					goto continue
+					continue  -- skip if no humanoid
 				end
 			end
 	
@@ -908,12 +910,9 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 					maxHealth
 				)
 			end
-	
-			::continue::
 		end
 	end
 	
-	-- Run on Heartbeat, but only every CONFIG.UpdateInterval seconds
 	local lastUpdate = 0
 	RunService.Heartbeat:Connect(function(deltaTime)
 		lastUpdate = lastUpdate + deltaTime
@@ -923,7 +922,8 @@ local function EZWTHV_fake_script() -- ESPButton_2.LocalScript
 		end
 	end)
 	
-	-- Initial state: ESP off
+	-- Initial state
 	updateButton()
+	print("ESP script ready – click the button to toggle")
 end
-coroutine.wrap(EZWTHV_fake_script)()
+coroutine.wrap(XVOS_fake_script)()
